@@ -28,7 +28,10 @@ module.exports = merge([
   }),
   parts.loadFonts({
     options: {
-      name: "[name].[hash:8].[ext]",
+      // name: "[name].[hash:8].[ext]",
+      name: "[name].[ext]",
+      outputPath:: "css/",
+      publicPath: "../"
     },
   }),
   parts.loadJavaScript({
