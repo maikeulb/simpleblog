@@ -1,0 +1,23 @@
+   <table>
+        <tr valign="top">
+
+            <td width="70px">
+                <a href="{{ url_for('main.user', username=post.author.username) }}">
+                    <img src="" />
+                </a>
+            </td>
+
+            <td>
+                {% set user_link %}
+                    <a href="{{ url_for('main.user', username=post.author.username) }}">
+                        {{ post.author.username }}
+                    </a>
+                {% endset %}
+                <br>
+                <span id="post{{ post.id }}">{{ post.body }}</span>
+                <br><br>
+                </span>
+            </td>
+
+        </tr>
+    </table>
