@@ -2,7 +2,8 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
-from config import DevelopmentConfig
+import config
+import os
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -10,10 +11,12 @@ login = LoginManager()
 login.login_view = 'auth.login'
 login.login_message = ('Please log in to access this page.')
 
+config_class = eval(os.environ['FLASK_APP_CONFIG'])
 
-def create_app(config_class=DevelopmentConfig):
+def create_app(config_class):
     app = Flask(__name__)
     app.config.from_object(config_class)
+    app.static_folder = config.STATIC_FOLDER
 
     db.init_app(app)
     migrate.init_app(app, db)

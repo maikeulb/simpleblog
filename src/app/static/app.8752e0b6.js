@@ -1,0 +1,1 @@
+webpackJsonp([0],{"./Semantic-UI-CSS/semantic.css":function(s,e){},"./assets/js/script.js":function(s,e,t){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=t("./Semantic-UI-CSS/semantic.css");t.n(n);window.$=window.jQuery=t("./node_modules/jquery/dist/jquery.js")}},["./assets/js/script.js"]);

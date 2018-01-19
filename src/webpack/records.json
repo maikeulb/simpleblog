@@ -1,0 +1,124 @@
+{
+  "extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/index.js!node_modules/postcss-loader/lib/index.js??ref--2-3!assets/css/style.css": [
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/css-loader/index.js!node_modules/postcss-loader/lib/index.js?{}!assets/css/style.css": "./node_modules/css-loader/index.js!./node_modules/postcss-loader/lib/index.js?{}!./assets/css/style.css",
+          "node_modules/css-loader/lib/css-base.js": "./node_modules/css-loader/lib/css-base.js"
+        },
+        "usedIds": {
+          "./node_modules/css-loader/index.js!./node_modules/postcss-loader/lib/index.js?{}!./assets/css/style.css": "./node_modules/css-loader/index.js!./node_modules/postcss-loader/lib/index.js?{}!./assets/css/style.css",
+          "./node_modules/css-loader/lib/css-base.js": "./node_modules/css-loader/lib/css-base.js"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "0": 0
+        }
+      }
+    }
+  ],
+  "modules": {
+    "byIdentifier": {
+      "node_modules/extract-text-webpack-plugin/dist/loader.js??ref--2-0!node_modules/style-loader/index.js!node_modules/css-loader/index.js!node_modules/postcss-loader/lib/index.js??ref--2-3!assets/css/style.css": "./assets/css/style.css",
+      "node_modules/babel-loader/lib/index.js!assets/js/script.js": "./assets/js/script.js",
+      "node_modules/extract-text-webpack-plugin/dist/loader.js??ref--2-0!node_modules/style-loader/index.js!node_modules/css-loader/index.js!node_modules/postcss-loader/lib/index.js??ref--2-3!Semantic-UI-CSS/semantic.css": "./Semantic-UI-CSS/semantic.css",
+      "node_modules/jquery/dist/jquery.js": "./node_modules/jquery/dist/jquery.js",
+      "node_modules/extract-text-webpack-plugin/dist/loader.js??ref--2-0!node_modules/style-loader/index.js!node_modules/css-loader/index.js!node_modules/postcss-loader/lib/index.js??ref--2-3!node_modules/semantic-ui-css/semantic.min.css": "./node_modules/semantic-ui-css/semantic.min.css",
+      "node_modules/semantic-ui-css/semantic.min.js": "./node_modules/semantic-ui-css/semantic.min.js"
+    },
+    "usedIds": {
+      "./assets/css/style.css": "./assets/css/style.css",
+      "./assets/js/script.js": "./assets/js/script.js",
+      "./Semantic-UI-CSS/semantic.css": "./Semantic-UI-CSS/semantic.css",
+      "./node_modules/jquery/dist/jquery.js": "./node_modules/jquery/dist/jquery.js",
+      "./node_modules/semantic-ui-css/semantic.min.css": "./node_modules/semantic-ui-css/semantic.min.css",
+      "./node_modules/semantic-ui-css/semantic.min.js": "./node_modules/semantic-ui-css/semantic.min.js"
+    }
+  },
+  "chunks": {
+    "byName": {
+      "app": 0,
+      "manifest": 1,
+      "vendor": 2
+    },
+    "byBlocks": {},
+    "usedIds": {
+      "0": 0,
+      "1": 1,
+      "2": 2
+    }
+  },
+  "extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/index.js!node_modules/postcss-loader/lib/index.js??ref--2-3!Semantic-UI-CSS/semantic.css": [
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/file-loader/dist/cjs.js??ref--0!Semantic-UI-CSS/themes/default/assets/fonts/icons.eot": "./Semantic-UI-CSS/themes/default/assets/fonts/icons.eot",
+          "node_modules/url-loader/index.js??ref--3!Semantic-UI-CSS/themes/default/assets/fonts/icons.svg": "./Semantic-UI-CSS/themes/default/assets/fonts/icons.svg",
+          "node_modules/file-loader/dist/cjs.js??ref--0!Semantic-UI-CSS/themes/default/assets/fonts/icons.ttf": "./Semantic-UI-CSS/themes/default/assets/fonts/icons.ttf",
+          "node_modules/file-loader/dist/cjs.js??ref--0!Semantic-UI-CSS/themes/default/assets/fonts/icons.woff": "./Semantic-UI-CSS/themes/default/assets/fonts/icons.woff",
+          "node_modules/file-loader/dist/cjs.js??ref--0!Semantic-UI-CSS/themes/default/assets/fonts/icons.woff2": "./Semantic-UI-CSS/themes/default/assets/fonts/icons.woff2",
+          "node_modules/url-loader/index.js??ref--3!Semantic-UI-CSS/themes/default/assets/images/flags.png": "./Semantic-UI-CSS/themes/default/assets/images/flags.png",
+          "node_modules/css-loader/index.js!node_modules/postcss-loader/lib/index.js?{}!Semantic-UI-CSS/semantic.css": "./node_modules/css-loader/index.js!./node_modules/postcss-loader/lib/index.js?{}!./Semantic-UI-CSS/semantic.css",
+          "node_modules/css-loader/lib/css-base.js": "./node_modules/css-loader/lib/css-base.js",
+          "node_modules/css-loader/lib/url/escape.js": "./node_modules/css-loader/lib/url/escape.js"
+        },
+        "usedIds": {
+          "./Semantic-UI-CSS/themes/default/assets/fonts/icons.eot": "./Semantic-UI-CSS/themes/default/assets/fonts/icons.eot",
+          "./Semantic-UI-CSS/themes/default/assets/fonts/icons.svg": "./Semantic-UI-CSS/themes/default/assets/fonts/icons.svg",
+          "./Semantic-UI-CSS/themes/default/assets/fonts/icons.ttf": "./Semantic-UI-CSS/themes/default/assets/fonts/icons.ttf",
+          "./Semantic-UI-CSS/themes/default/assets/fonts/icons.woff": "./Semantic-UI-CSS/themes/default/assets/fonts/icons.woff",
+          "./Semantic-UI-CSS/themes/default/assets/fonts/icons.woff2": "./Semantic-UI-CSS/themes/default/assets/fonts/icons.woff2",
+          "./Semantic-UI-CSS/themes/default/assets/images/flags.png": "./Semantic-UI-CSS/themes/default/assets/images/flags.png",
+          "./node_modules/css-loader/index.js!./node_modules/postcss-loader/lib/index.js?{}!./Semantic-UI-CSS/semantic.css": "./node_modules/css-loader/index.js!./node_modules/postcss-loader/lib/index.js?{}!./Semantic-UI-CSS/semantic.css",
+          "./node_modules/css-loader/lib/css-base.js": "./node_modules/css-loader/lib/css-base.js",
+          "./node_modules/css-loader/lib/url/escape.js": "./node_modules/css-loader/lib/url/escape.js"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "1": 1
+        }
+      }
+    }
+  ],
+  "extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/index.js!node_modules/postcss-loader/lib/index.js??ref--2-3!node_modules/semantic-ui-css/semantic.min.css": [
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/css-loader/index.js!node_modules/postcss-loader/lib/index.js?{}!node_modules/semantic-ui-css/semantic.min.css": "./node_modules/css-loader/index.js!./node_modules/postcss-loader/lib/index.js?{}!./node_modules/semantic-ui-css/semantic.min.css",
+          "node_modules/css-loader/lib/css-base.js": "./node_modules/css-loader/lib/css-base.js",
+          "node_modules/css-loader/lib/url/escape.js": "./node_modules/css-loader/lib/url/escape.js",
+          "node_modules/file-loader/dist/cjs.js??ref--0!node_modules/semantic-ui-css/themes/default/assets/fonts/icons.eot": "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.eot",
+          "node_modules/url-loader/index.js??ref--3!node_modules/semantic-ui-css/themes/default/assets/fonts/icons.svg": "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.svg",
+          "node_modules/file-loader/dist/cjs.js??ref--0!node_modules/semantic-ui-css/themes/default/assets/fonts/icons.ttf": "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.ttf",
+          "node_modules/file-loader/dist/cjs.js??ref--0!node_modules/semantic-ui-css/themes/default/assets/fonts/icons.woff": "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.woff",
+          "node_modules/file-loader/dist/cjs.js??ref--0!node_modules/semantic-ui-css/themes/default/assets/fonts/icons.woff2": "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.woff2",
+          "node_modules/url-loader/index.js??ref--3!node_modules/semantic-ui-css/themes/default/assets/images/flags.png": "./node_modules/semantic-ui-css/themes/default/assets/images/flags.png"
+        },
+        "usedIds": {
+          "./node_modules/css-loader/index.js!./node_modules/postcss-loader/lib/index.js?{}!./node_modules/semantic-ui-css/semantic.min.css": "./node_modules/css-loader/index.js!./node_modules/postcss-loader/lib/index.js?{}!./node_modules/semantic-ui-css/semantic.min.css",
+          "./node_modules/css-loader/lib/css-base.js": "./node_modules/css-loader/lib/css-base.js",
+          "./node_modules/css-loader/lib/url/escape.js": "./node_modules/css-loader/lib/url/escape.js",
+          "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.eot": "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.eot",
+          "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.svg": "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.svg",
+          "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.ttf": "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.ttf",
+          "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.woff": "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.woff",
+          "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.woff2": "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.woff2",
+          "./node_modules/semantic-ui-css/themes/default/assets/images/flags.png": "./node_modules/semantic-ui-css/themes/default/assets/images/flags.png"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "0": 0
+        }
+      }
+    }
+  ]
+}

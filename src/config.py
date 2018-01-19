@@ -6,8 +6,8 @@ load_dotenv(dotenv_path)
 
 
 class Config(object):
-    DEBUG = True
-    TESTING = False
+
+    WEBPACK_MANIFEST_PATH = '/build/manifest.json'
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
         'sqlite:///' + os.path.join(dotenv_path, 'app.db')
@@ -15,14 +15,21 @@ class Config(object):
         'P@ssw0rd!'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
+    STATIC_FOLDER = 'app/static'
 
-class ProductionConfig(Config):
-    DATABASE_URI = ''
-
+    DEVELOPMENT = False
+    TESTING = False
+    PRODUCTION = False
+    DEBUG = False 
+    TESTING = False
 
 class DevelopmentConfig(Config):
     DEBUG = True
+    DEVELOPMENT = True
 
+class ProductionConfig(Config):
+    DATABASE_URI = ''
+    PRODUCTION = True
 
 class TestingConfig(Config):
     TESTING = True
