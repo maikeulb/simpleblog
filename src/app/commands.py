@@ -23,7 +23,7 @@ def test():
 @click.option('-f', '--fix-imports', default=False, is_flag=True,
               help='Fix imports using isort, before linting')
 def lint(fix_imports):
-    skip = ['node_modules', 'requirements']
+    skip = ['node_modules', 'requirements', 'venv']
     root_files = glob('*.py')
     root_directories = [
         name for name in next(os.walk('.'))[1] if not name.startswith('.')]
