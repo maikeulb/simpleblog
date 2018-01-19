@@ -15,12 +15,16 @@ module.exports = merge([
     },
     plugins: [
       new webpack.NamedModulesPlugin(),
-      new webpack.HotModuleReplacementPlugin()
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.ProvidePlugin({
+        $: "jquery",
+        jQuery: "jquery",
+        "window.jQuery": "jquery"
+      })
     ],
   },
   parts.extractCSS({
-    use: ["css-loader", parts.autoprefix()],
-    output: 'css/[name].css', 
+    use: ['css-loader', 'sass-loader', parts.autoprefix()],
   }),
   parts.loadFonts({
     options: {

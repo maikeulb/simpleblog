@@ -70,18 +70,16 @@ exports.loadCSS = ({ include, exclude } = {}) => ({
 });
 
 exports.extractCSS = ({ include, exclude, use }) => {
-  // Output extracted CSS to a file
   const plugin = new ExtractTextPlugin({
-    // `allChunks` is needed with CommonsChunkPlugin to extract
-    // from extracted chunks as well.
-    allChunks: true,
-    filename: "[name].[contenthash:8].css",
+    // allChunks: true,
+    // filename: "[name].[contenthash:8].css",
+    filename: 'css/[name].css', 
   });
   return {
     module: {
       rules: [
         {
-          test: /\.css$/,
+          test: /\.(s*)css$/,
           include,
           exclude,
           use: plugin.extract({
@@ -122,7 +120,6 @@ exports.loadFonts = ({ include, exclude, options } = {}) => ({
   module: {
     rules: [
       {
-        // Capture eot, ttf, woff, and woff2
         test: /\.(eot|ttf|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
         include,
         exclude,

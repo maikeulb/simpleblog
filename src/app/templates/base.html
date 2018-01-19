@@ -12,7 +12,8 @@
       <link rel="stylesheet" href="http://localhost:8080/static/build/css/app.css">
     {% else %}
       <!-- Static Build Mode -->
-      <link rel="stylesheet" href="/static/build/css/app.css">
+      <link rel=stylesheet type=text/css href="{{ url_for('static',
+      filename='css/app.css') }}">
     {% endif %}
   </head>
 
@@ -41,10 +42,10 @@
 
     {% if config.DEVELOPMENT %}
       <!-- Webpack Dev Mode -->
-      <script src='http://localhost:8080/static/build/js/app.bundle.js'></script>
+      <script src='http://localhost:8080/static/js/app.bundle.js'></script>
     {% else %}
       <!-- Static Build Mode -->
-      <script src='/static/build/js/app.bundle.js'></script>
+      <script src='/static/js/app.bundle.js'></script>
     {% endif %}
     {% block js %}{% endblock %}
   </body>
