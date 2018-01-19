@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "layout.html" %}
 
 {% block content %}
     <h1>Register</h1>
@@ -34,6 +34,6 @@
         </p>
         <p>{{ form.submit() }}</p>
     </form>
-    <p>Already registered?<a href="{{ url_for('auth.login') }}">Click to Login!</a></p>
-    <p>New User? <a href="{{ url_for('auth.register') }}">Click to Register!</a></p>
+    <p>Already registered?<a href="{{ url_for('account.login') }}">Click to Login!</a></p>
+    <p>New User? <a href="{{ url_for('account.register') }}">Click to Register!</a></p>
 {% endblock %}

@@ -6,6 +6,9 @@ from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf.csrf import CSRFProtect
 
+# from raven.contrib.flask import Sentry
+# sentry = Sentry()
+
 bcrypt = Bcrypt()
 csrf_protect = CSRFProtect()
 login = LoginManager()

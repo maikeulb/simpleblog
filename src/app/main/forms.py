@@ -19,6 +19,12 @@ class EditProfileForm(FlaskForm):
             if user is not None:
                 raise ValidationError('Please use a different username.')
 
+    # def validate_avatar_file(form, field):
+    #     if field.data and not allowed_file(field.data.filename):
+    #         raise ValidationError("Please upload files with extensions: %s" %
+
 class PostForm(FlaskForm):
     post = TextAreaField('Say something', validators=[DataRequired()])
     submit = SubmitField('Submit')
+    # submit = SubmitField('Update profile',
+    #                      render_kw={"class": "btn btn-success"})

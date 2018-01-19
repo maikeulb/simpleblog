@@ -30,7 +30,7 @@ module.exports = merge([
     options: {
       // name: "[name].[hash:8].[ext]",
       name: "[name].[ext]",
-      outputPath:: "css/",
+      outputPath: "css/",
       publicPath: "../"
     },
   }),

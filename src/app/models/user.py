@@ -9,7 +9,9 @@ from app.extensions import bcrypt, login
 
 
 class User(UserMixin, SurrogatePK, Model):
+
     __tablename__ = 'users'
+
     username = db.Column(db.String(64), index=True, unique=True, nullable=False)
     email = db.Column(db.String(120), index=True, unique=True, nullable=False)
     password = Column(db.Binary(128), nullable=True)
@@ -32,6 +34,9 @@ class User(UserMixin, SurrogatePK, Model):
     def set_password(self, password):
         self.password = bcrypt.generate_password_hash(password)
 
+    # def _get_password(self): // make password into property
+    #     return self._password
+
     def check_password(self, password):
         return bcrypt.check_password_hash(self.password, value)
 
@@ -44,6 +49,21 @@ class User(UserMixin, SurrogatePK, Model):
         digest = md5(self.email.lower().encode('utf-8')).hexdigest()
         return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(
             digest, size)
+
+    # @classmethod
+    # def authenticate(cls, login, password):
+    #     user = cls.query.filter(db.or_(
+    #         User.name == login, User.email == login)).first()
+    #     if user:
+    #         authenticated = user.check_password(password)
+    #     else:
+    #         authenticated = False
+    #     return user, authenticated
+
+    # @classmethod
+    # def get_by_id(cls, user_id):
+    #     return cls.query.filter_by(id=user_id).first_or_404()
+
 
 
 @login.user_loader

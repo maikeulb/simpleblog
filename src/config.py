@@ -15,7 +15,11 @@ class Config(object):
         'P@ssw0rd!'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-    STATIC_FOLDER = 'app/static'
+    # ADMINS = ['michael.sergio.barnes@gmail.com']
+    # UPLOAD_FOLDER = os.path.join(INSTANCE_FOLDER_PATH, 'uploads')
+    # LOG_FOLDER = os.path.join(INSTANCE_FOLDER_PATH, 'logs')
+    # MAX_CONTENT_LENGTH = 16 * 1024 * 1024
+    # PROJECT_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 
     DEVELOPMENT = False
     TESTING = False
@@ -38,4 +42,5 @@ class TestingConfig(Config):
     TESTING = True
     SQLALCHEMY_DATABASE_URI = 'sqlite://'
     BCRYPT_LOG_ROUNDS = 4  
+    CSRF_ENABLED = False
     WTF_CSRF_ENABLED = False  

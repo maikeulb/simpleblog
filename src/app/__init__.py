@@ -3,10 +3,10 @@ import os
 
 from flask import Flask, render_template
 from app import commands
-from app.auth import bp as auth_bp
-from app.errors import bp as errors_bp
+from app.account import account as account_bp
+# from app.errors import bp as errors_bp
 from app.extensions import bcrypt, cache, csrf_protect, db, debug_toolbar, login, migrate
-from app.main import bp as main_bp
+from app.main import main as main_bp
 
 Config = eval(os.environ['FLASK_APP_CONFIG'])
 
@@ -14,10 +14,9 @@ Config = eval(os.environ['FLASK_APP_CONFIG'])
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
-    # app.static_folder = config_class.STATIC_FOLDER
-    register_extensions(app)
     register_blueprints(app)
-    # register_errorhandlers(app)
+    register_extensions(app)
+    register_errorhandlers(app)
     register_commands(app)
     return app
 
@@ -34,20 +33,18 @@ def register_extensions(app):
 
 
 def register_blueprints(app):
-    app.register_blueprint(auth_bp, url_prefix='/auth')
-    app.register_blueprint(errors_bp)
+    app.register_blueprint(account_bp, url_prefix='/account')
+    # app.register_blueprint(errors_bp)
     app.register_blueprint(main_bp)
     return None
 
-
-# def register_errorhandlers(app):
-#     def render_error(error):
-#         error_code = getattr(error, 'code', 500)
-#         return render_template('{0}.html'.format(error_code)), error_code
-#     for errcode in [401, 404, 500]:
-#         app.errorhandler(errcode)(render_error)
-#     return None
-
+def register_errorhandlers(app):
+    def render_error(error):
+        error_code = getattr(error, 'code', 500)
+        return render_template('error_page.html'.format(error_code)), error_code
+    for errcode in [400, 401, 403, 404, 500, 502, 503]:
+        app.errorhandler(errcode)(render_error)
+    return None
 
 def register_commands(app):
     app.cli.add_command(commands.test)
@@ -55,5 +52,14 @@ def register_commands(app):
     app.cli.add_command(commands.clean)
     app.cli.add_command(commands.urls)
 
+# def configure_template_filters(app):
+#     app.jinja_env.filters["pretty_date"] = pretty_date
+#     app.jinja_env.filters["format_date"] = format_date
+#     app.jinja_env.filters["nl2br"] = nl2br
 
-from app import models
+def register_shellcontext(app):
+    def shell_context():
+        return {
+            'db': db,
+            'User': user.models.User}
+    app.shell_context_processor(shell_context)
