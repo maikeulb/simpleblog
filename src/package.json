@@ -35,8 +35,10 @@
     "webpack-sources": "^1.1.0"
   },
   "scripts": {
-    "start": "webpack-dev-server --config webpack/webpack.dev.js",
+    "start": "concurrently -n \"WEBPACK,FLASK\" -c \"bgBlue.bold,bgMagenta.bold\" \"npm run webpack-dev-server\" \"npm run flask-server\"",
     "build": "webpack --config webpack/webpack.prod.js",
+    "flask-server": "FLASK_DEBUG=1 FLASK_APP=simpleblog.py flask-run",
+    "webpack-dev-server": "webpack-dev-server --config webpack/webpack.dev.js",
     "test:jest:watch": "jest --watch",
     "test:jest": "jest",
     "test:mocha": "mocha tests"

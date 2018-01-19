@@ -32,18 +32,24 @@ exports.minifyJavaScript = () => ({
   plugins: [new UglifyWebpackPlugin()],
 });
 
-exports.clean = path => ({
-  plugins: [new CleanWebpackPlugin([path])],
+
+exports.clean = (dirsToClean, options ={}) => ({
+  plugins: [
+    new CleanWebpackPlugin(dirsToClean, options),
+  ],
 });
 
 exports.devServer = ({ host, port } = {}) => ({
   devServer: {
     stats: "errors-only",
-    host, // Defaults to `localhost`
-    port, // Defaults to 8080
+    host,
+    port,
     overlay: {
       errors: true,
       warnings: true,
+    },
+    headers: { 
+      'Access-Control-Allow-Origin': '*',
     },
     inline: true,
     hot: true

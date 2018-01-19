@@ -26,12 +26,14 @@
             {% endfor %}
         </p>
         <p>
-            {{ form.password2.label }}<br>
-            {{ form.password2(size=32) }}<br>
-            {% for error in form.password2.errors %}
+            {{ form.confirm.label }}<br>
+            {{ form.confirm(size=32) }}<br>
+            {% for error in form.confirm.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
         <p>{{ form.submit() }}</p>
     </form>
+    <p>Already registered?<a href="{{ url_for('auth.login') }}">Click to Login!</a></p>
+    <p>New User? <a href="{{ url_for('auth.register') }}">Click to Register!</a></p>
 {% endblock %}

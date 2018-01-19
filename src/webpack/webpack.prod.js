@@ -13,12 +13,12 @@ module.exports = merge([
       maxAssetSize: 450000, 
     },
     output: {
-      chunkFilename: "[name].[chunkhash:8].js",
-      filename: "[name].[chunkhash:8].js",
+      chunkFilename: "[name].[hash:8].js",
+      filename: "[name].[hash:8].js",
     },
     recordsPath: path.join(__dirname, "records.json"),
   },
-  parts.clean(parts.PATHS.output),
+  parts.clean(['static'], parts.PATHS.assets),
   parts.minifyJavaScript({}),
   parts.minifyCSS({
     options: {
@@ -39,9 +39,6 @@ module.exports = merge([
     },
   ]),
   parts.generateSourceMaps({ type: "source-map" }),
-  parts.extractCSS({
-    use: ["css-loader", parts.autoprefix()],
-  }),
   parts.loadImages({
     options: {
       limit: 15000,

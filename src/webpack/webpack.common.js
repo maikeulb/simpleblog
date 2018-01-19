@@ -17,8 +17,11 @@ module.exports = merge([
       new webpack.NamedModulesPlugin(),
       new webpack.HotModuleReplacementPlugin()
     ],
-
   },
+  parts.extractCSS({
+    use: ["css-loader", parts.autoprefix()],
+    output: 'css/[name].css', 
+  }),
   parts.loadFonts({
     options: {
       name: "[name].[hash:8].[ext]",

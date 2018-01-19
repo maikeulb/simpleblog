@@ -14,10 +14,6 @@ module.exports = merge([
   parts.generateSourceMaps({
     type: "cheap-module-eval-source-map",
   }),
-  parts.devServer({
-    host: process.env.HOST,
-    port: process.env.PORT,
-  }),
-  parts.loadCSS(),
+  parts.devServer(),
   parts.loadImages(),
 ]);

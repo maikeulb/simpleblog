@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8">
     {% if title %}
-      <title>{{ title }} - Microblog</title>
+      <title>{{ title }} - SimpleBlog</title>
     {% else %}
-      <title>Welcome to Microblog</title>
+      <title>Welcome to SimpleBlog</title>
     {% endif %}
     {% if config.DEVELOPMENT %}
       <!-- Webpack Dev Mode -->
@@ -17,42 +17,10 @@
   </head>
 
   <body>
-    {% block title %}
-      {% if title %}
-        {{ title }} - Microblog
-      {% else %}
-        Welcome to Microblog
-      {% endif %}
-    {% endblock %}
+    {% block title %} {% endblock %}
 
     {% block navbar %}
-      <nav class="navbar navbar-default">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{{ url_for('main.index') }}">Microblog</a>
-          </div>
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li><a href="{{ url_for('main.index') }}">Home</a></li>
-              <li><a href="{{ url_for('main.explore') }}">Explore</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              {% if current_user.is_anonymous %}
-                <li><a href="{{ url_for('auth.login') }}">Login</a></li>
-              {% else %}
-                <li><a href="{{ url_for('main.user', username=current_user.username) }}">Profile</a></li>
-                <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
-              {% endif %}
-            </ul>
-          </div>
-        </div>
-      </nav>
+    {% include '_navbar.html' %}
     {% endblock %}
 
     {% block content %}
@@ -69,12 +37,15 @@
       </div>
     {% endblock %}
 
+    {% include '_footer.html' %}
+
     {% if config.DEVELOPMENT %}
       <!-- Webpack Dev Mode -->
-      <script src="http://localhost:8080/static/build/js/app.bundle.js"></script>
+      <script src='http://localhost:8080/static/build/js/app.bundle.js'></script>
     {% else %}
       <!-- Static Build Mode -->
-      <script src="/static/build/js/app.bundle.js"></script>
+      <script src='/static/build/js/app.bundle.js'></script>
     {% endif %}
+    {% block js %}{% endblock %}
   </body>
 </html>

@@ -27,7 +27,8 @@
       "node_modules/extract-text-webpack-plugin/dist/loader.js??ref--2-0!node_modules/style-loader/index.js!node_modules/css-loader/index.js!node_modules/postcss-loader/lib/index.js??ref--2-3!Semantic-UI-CSS/semantic.css": "./Semantic-UI-CSS/semantic.css",
       "node_modules/jquery/dist/jquery.js": "./node_modules/jquery/dist/jquery.js",
       "node_modules/extract-text-webpack-plugin/dist/loader.js??ref--2-0!node_modules/style-loader/index.js!node_modules/css-loader/index.js!node_modules/postcss-loader/lib/index.js??ref--2-3!node_modules/semantic-ui-css/semantic.min.css": "./node_modules/semantic-ui-css/semantic.min.css",
-      "node_modules/semantic-ui-css/semantic.min.js": "./node_modules/semantic-ui-css/semantic.min.js"
+      "node_modules/semantic-ui-css/semantic.min.js": "./node_modules/semantic-ui-css/semantic.min.js",
+      "node_modules/extract-text-webpack-plugin/dist/loader.js??ref--0-0!node_modules/style-loader/index.js!node_modules/css-loader/index.js!node_modules/postcss-loader/lib/index.js??ref--0-3!node_modules/semantic-ui-css/semantic.min.css": "./node_modules/semantic-ui-css/semantic.min.css"
     },
     "usedIds": {
       "./assets/css/style.css": "./assets/css/style.css",
@@ -116,8 +117,128 @@
         "byName": {},
         "byBlocks": {},
         "usedIds": {
+          "1": 1
+        }
+      },
+      "prepreHash": "x",
+      "preHash": "7b6cb59f75654f371c39",
+      "hash": "833a6f557713ed4a0cc1",
+      "moduleHashs": {
+        "/home/michael/Projects-Flask/simpleblog/src/node_modules/css-loader/index.js!/home/michael/Projects-Flask/simpleblog/src/node_modules/postcss-loader/lib/index.js?{}!/home/michael/Projects-Flask/simpleblog/src/node_modules/semantic-ui-css/semantic.min.css": "03e286a9c9ce0f439470867940e14565",
+        "/home/michael/Projects-Flask/simpleblog/src/node_modules/css-loader/lib/css-base.js": "feee2a24dc85152980dbac6680fe3914",
+        "/home/michael/Projects-Flask/simpleblog/src/node_modules/css-loader/lib/url/escape.js": "c90526a0885da476bd5869540efff8b8",
+        "/home/michael/Projects-Flask/simpleblog/src/node_modules/file-loader/dist/cjs.js??ref--0!/home/michael/Projects-Flask/simpleblog/src/node_modules/semantic-ui-css/themes/default/assets/fonts/icons.eot": "a4940bd271e6f9eb45f417815d98a0aa",
+        "/home/michael/Projects-Flask/simpleblog/src/node_modules/url-loader/index.js??ref--3!/home/michael/Projects-Flask/simpleblog/src/node_modules/semantic-ui-css/themes/default/assets/fonts/icons.svg": "248f73f4eb93ea00ce8b561f4edf6387",
+        "/home/michael/Projects-Flask/simpleblog/src/node_modules/file-loader/dist/cjs.js??ref--0!/home/michael/Projects-Flask/simpleblog/src/node_modules/semantic-ui-css/themes/default/assets/fonts/icons.ttf": "e9abeba1a4e3e1b74c13168f07d8178f",
+        "/home/michael/Projects-Flask/simpleblog/src/node_modules/file-loader/dist/cjs.js??ref--0!/home/michael/Projects-Flask/simpleblog/src/node_modules/semantic-ui-css/themes/default/assets/fonts/icons.woff": "6981709e51cddf5168bb9a294c66eb22",
+        "/home/michael/Projects-Flask/simpleblog/src/node_modules/file-loader/dist/cjs.js??ref--0!/home/michael/Projects-Flask/simpleblog/src/node_modules/semantic-ui-css/themes/default/assets/fonts/icons.woff2": "610a272b13868b86fc9e6e3f632daba4",
+        "/home/michael/Projects-Flask/simpleblog/src/node_modules/url-loader/index.js??ref--3!/home/michael/Projects-Flask/simpleblog/src/node_modules/semantic-ui-css/themes/default/assets/images/flags.png": "adf16ef7a535c55250b127a9df571234"
+      },
+      "chunkHashs": {
+        "1": "cc67ca919a3bf391c4f62af34a440747"
+      },
+      "chunkModuleIds": {
+        "1": [
+          "./node_modules/css-loader/index.js!./node_modules/postcss-loader/lib/index.js?{}!./node_modules/semantic-ui-css/semantic.min.css",
+          "./node_modules/css-loader/lib/css-base.js",
+          "./node_modules/css-loader/lib/url/escape.js",
+          "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.eot",
+          "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.svg",
+          "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.ttf",
+          "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.woff",
+          "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.woff2",
+          "./node_modules/semantic-ui-css/themes/default/assets/images/flags.png"
+        ]
+      }
+    }
+  ],
+  "prepreHash": "884904e493c53a5bee89",
+  "preHash": "d0a46ee68a1eb8ac4919",
+  "hash": "371f1943f9f93f68c7e5",
+  "moduleHashs": {
+    "/home/michael/Projects-Flask/simpleblog/src/node_modules/babel-loader/lib/index.js!/home/michael/Projects-Flask/simpleblog/src/assets/js/script.js": "399fe69ef24735ee37023caa9272d132",
+    "/home/michael/Projects-Flask/simpleblog/src/node_modules/jquery/dist/jquery.js": "6bc860a7a41eabe4fedb9b5840bd856c",
+    "/home/michael/Projects-Flask/simpleblog/src/node_modules/extract-text-webpack-plugin/dist/loader.js??ref--0-0!/home/michael/Projects-Flask/simpleblog/src/node_modules/style-loader/index.js!/home/michael/Projects-Flask/simpleblog/src/node_modules/css-loader/index.js!/home/michael/Projects-Flask/simpleblog/src/node_modules/postcss-loader/lib/index.js??ref--0-3!/home/michael/Projects-Flask/simpleblog/src/node_modules/semantic-ui-css/semantic.min.css": "ff71b8b96348413eecdfff30ef812256",
+    "/home/michael/Projects-Flask/simpleblog/src/node_modules/semantic-ui-css/semantic.min.js": "00cb4158468723f4e5c615eb89528f34"
+  },
+  "chunkHashs": {
+    "0": "212297dfc01c2e764ec473f2fec8cb2c",
+    "1": "3d9bcf232b643305a4b0e8798ccd85d3",
+    "2": "692889d385f28c4720b9fc55baf8dd15"
+  },
+  "chunkModuleIds": {
+    "0": [
+      "./assets/js/script.js"
+    ],
+    "1": [],
+    "2": [
+      "./node_modules/jquery/dist/jquery.js",
+      "./node_modules/semantic-ui-css/semantic.min.css",
+      "./node_modules/semantic-ui-css/semantic.min.js"
+    ]
+  },
+  "extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/index.js!node_modules/postcss-loader/lib/index.js??ref--0-3!node_modules/semantic-ui-css/semantic.min.css": [
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/css-loader/index.js!node_modules/postcss-loader/lib/index.js?{}!node_modules/semantic-ui-css/semantic.min.css": "./node_modules/css-loader/index.js!./node_modules/postcss-loader/lib/index.js?{}!./node_modules/semantic-ui-css/semantic.min.css",
+          "node_modules/css-loader/lib/css-base.js": "./node_modules/css-loader/lib/css-base.js",
+          "node_modules/css-loader/lib/url/escape.js": "./node_modules/css-loader/lib/url/escape.js",
+          "node_modules/file-loader/dist/cjs.js??ref--1!node_modules/semantic-ui-css/themes/default/assets/fonts/icons.eot": "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.eot",
+          "node_modules/url-loader/index.js??ref--3!node_modules/semantic-ui-css/themes/default/assets/fonts/icons.svg": "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.svg",
+          "node_modules/file-loader/dist/cjs.js??ref--1!node_modules/semantic-ui-css/themes/default/assets/fonts/icons.ttf": "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.ttf",
+          "node_modules/file-loader/dist/cjs.js??ref--1!node_modules/semantic-ui-css/themes/default/assets/fonts/icons.woff": "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.woff",
+          "node_modules/file-loader/dist/cjs.js??ref--1!node_modules/semantic-ui-css/themes/default/assets/fonts/icons.woff2": "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.woff2",
+          "node_modules/url-loader/index.js??ref--3!node_modules/semantic-ui-css/themes/default/assets/images/flags.png": "./node_modules/semantic-ui-css/themes/default/assets/images/flags.png"
+        },
+        "usedIds": {
+          "./node_modules/css-loader/index.js!./node_modules/postcss-loader/lib/index.js?{}!./node_modules/semantic-ui-css/semantic.min.css": "./node_modules/css-loader/index.js!./node_modules/postcss-loader/lib/index.js?{}!./node_modules/semantic-ui-css/semantic.min.css",
+          "./node_modules/css-loader/lib/css-base.js": "./node_modules/css-loader/lib/css-base.js",
+          "./node_modules/css-loader/lib/url/escape.js": "./node_modules/css-loader/lib/url/escape.js",
+          "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.eot": "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.eot",
+          "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.svg": "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.svg",
+          "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.ttf": "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.ttf",
+          "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.woff": "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.woff",
+          "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.woff2": "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.woff2",
+          "./node_modules/semantic-ui-css/themes/default/assets/images/flags.png": "./node_modules/semantic-ui-css/themes/default/assets/images/flags.png"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
           "0": 0
         }
+      },
+      "prepreHash": "x",
+      "preHash": "b4bbdad62a03d1bb2fac",
+      "hash": "2efd9171904690905aff",
+      "moduleHashs": {
+        "/home/michael/Projects-Flask/simpleblog/src/node_modules/css-loader/index.js!/home/michael/Projects-Flask/simpleblog/src/node_modules/postcss-loader/lib/index.js?{}!/home/michael/Projects-Flask/simpleblog/src/node_modules/semantic-ui-css/semantic.min.css": "03e286a9c9ce0f439470867940e14565",
+        "/home/michael/Projects-Flask/simpleblog/src/node_modules/css-loader/lib/css-base.js": "feee2a24dc85152980dbac6680fe3914",
+        "/home/michael/Projects-Flask/simpleblog/src/node_modules/css-loader/lib/url/escape.js": "c90526a0885da476bd5869540efff8b8",
+        "/home/michael/Projects-Flask/simpleblog/src/node_modules/file-loader/dist/cjs.js??ref--1!/home/michael/Projects-Flask/simpleblog/src/node_modules/semantic-ui-css/themes/default/assets/fonts/icons.eot": "a4940bd271e6f9eb45f417815d98a0aa",
+        "/home/michael/Projects-Flask/simpleblog/src/node_modules/url-loader/index.js??ref--3!/home/michael/Projects-Flask/simpleblog/src/node_modules/semantic-ui-css/themes/default/assets/fonts/icons.svg": "248f73f4eb93ea00ce8b561f4edf6387",
+        "/home/michael/Projects-Flask/simpleblog/src/node_modules/file-loader/dist/cjs.js??ref--1!/home/michael/Projects-Flask/simpleblog/src/node_modules/semantic-ui-css/themes/default/assets/fonts/icons.ttf": "e9abeba1a4e3e1b74c13168f07d8178f",
+        "/home/michael/Projects-Flask/simpleblog/src/node_modules/file-loader/dist/cjs.js??ref--1!/home/michael/Projects-Flask/simpleblog/src/node_modules/semantic-ui-css/themes/default/assets/fonts/icons.woff": "6981709e51cddf5168bb9a294c66eb22",
+        "/home/michael/Projects-Flask/simpleblog/src/node_modules/file-loader/dist/cjs.js??ref--1!/home/michael/Projects-Flask/simpleblog/src/node_modules/semantic-ui-css/themes/default/assets/fonts/icons.woff2": "610a272b13868b86fc9e6e3f632daba4",
+        "/home/michael/Projects-Flask/simpleblog/src/node_modules/url-loader/index.js??ref--3!/home/michael/Projects-Flask/simpleblog/src/node_modules/semantic-ui-css/themes/default/assets/images/flags.png": "adf16ef7a535c55250b127a9df571234"
+      },
+      "chunkHashs": {
+        "0": "51d7b3a695ff9dfd5e09d512194d4d69"
+      },
+      "chunkModuleIds": {
+        "0": [
+          "./node_modules/css-loader/index.js!./node_modules/postcss-loader/lib/index.js?{}!./node_modules/semantic-ui-css/semantic.min.css",
+          "./node_modules/css-loader/lib/css-base.js",
+          "./node_modules/css-loader/lib/url/escape.js",
+          "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.eot",
+          "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.svg",
+          "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.ttf",
+          "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.woff",
+          "./node_modules/semantic-ui-css/themes/default/assets/fonts/icons.woff2",
+          "./node_modules/semantic-ui-css/themes/default/assets/images/flags.png"
+        ]
       }
     }
   ]
