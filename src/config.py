@@ -10,10 +10,8 @@ class Config(object):
 
     WEBPACK_MANIFEST_PATH = '/build/manifest.json'
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-        'sqlite:///' + os.path.join(basedir, 'app.db')
-    SQLALCHEMY_DATABASE_PASSWORD = os.environ.get('DATABASE_PASSWORD') or \
-        'P@ssw0rd!'
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URI') 
+#        'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # ADMINS = ['michael.sergio.barnes@gmail.com']

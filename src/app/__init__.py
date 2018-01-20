@@ -3,6 +3,7 @@ import os
 
 from flask import Flask, render_template
 from app import commands, models
+import app.models
 from app.account import account as account_bp
 from app.extensions import bcrypt, cache, csrf_protect, db, debug_toolbar, login, migrate
 from app.main import main as main_bp
