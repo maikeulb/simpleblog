@@ -8,10 +8,11 @@ from app.database import Column, Model, SurrogatePK, db, reference_col, \
 from app.extensions import bcrypt, login
 
 
-class User(UserMixin, SurrogatePK, Model):
+class User(UserMixin, Model):
 
     __tablename__ = 'users'
 
+    id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True, nullable=False)
     email = db.Column(db.String(120), index=True, unique=True, nullable=False)
     password = Column(db.Binary(128), nullable=True)
@@ -37,7 +38,7 @@ class User(UserMixin, SurrogatePK, Model):
     # def _get_password(self): // make password into property
     #     return self._password
 
-    def check_password(self, password):
+    def check_password(self, value):
         return bcrypt.check_password_hash(self.password, value)
 
     @property
@@ -69,13 +70,3 @@ class User(UserMixin, SurrogatePK, Model):
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
-
-
-class Post(SurrogatePK, Model):
-    __tablename__ = 'posts'
-    body = db.Column(db.String(140))
-    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
-    def __repr__(self):
-        return '<Post {}>'.format(self.body)

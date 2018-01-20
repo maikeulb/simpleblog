@@ -28,9 +28,6 @@ class LoginForm(FlaskForm):
             self.password.errors.append('Invalid password')
             return False
 
-        if not self.user.active:
-            self.username.errors.append('User not activated')
-            return False
         return True
 
 class RegistrationForm(FlaskForm):
@@ -45,7 +42,7 @@ class RegistrationForm(FlaskForm):
         self.user = None
 
     def validate(self):
-        initial_validation = super(RegisterForm, self).validate()
+        initial_validation = super(RegistrationForm, self).validate()
         if not initial_validation:
             return False
         user = User.query.filter_by(username=self.username.data).first()
