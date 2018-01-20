@@ -12,7 +12,7 @@ from flask_wtf.csrf import CSRFProtect
 bcrypt = Bcrypt()
 csrf_protect = CSRFProtect()
 login = LoginManager()
-login.login_view = 'auth.login'
+login.login_view = 'account.login'
 login.login_message = ('Please log in to access this page.')
 db = SQLAlchemy()
 migrate = Migrate()

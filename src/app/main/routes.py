@@ -8,7 +8,7 @@ from app.models import User, Post
 
 @main.route('/', methods=['GET', 'POST'])
 @main.route('/index', methods=['GET', 'POST'])
-# @login_required
+@login_required
 def index():
     post_form = PostForm()
     if post_form.validate_on_submit():
@@ -23,7 +23,7 @@ def index():
                            posts=posts)
 
 @main.route('/explore')
-# @login_required
+@login_required
 def explore():
     posts = Post.query.order_by(Post.timestamp.desc())
     return render_template('index.html', 
@@ -32,7 +32,7 @@ def explore():
 
 
 @main.route('/user/<username>')
-# @login_required
+@login_required
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
     posts = [
@@ -42,7 +42,7 @@ def user(username):
     return render_template('user.html', user=user, posts=posts)
 
 @main.route('/edit_profile', methods=['GET', 'POST'])
-# @login_required
+@login_required
 def edit_profile():
     form = EditProfileForm(current_user.username)
     if form.validate_on_submit():
