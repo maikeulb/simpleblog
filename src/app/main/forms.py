@@ -26,5 +26,3 @@ class EditProfileForm(FlaskForm):
 class PostForm(FlaskForm):
     post = TextAreaField('Say something', validators=[DataRequired()])
     submit = SubmitField('Submit')
-    # submit = SubmitField('Update profile',
-    #                      render_kw={"class": "btn btn-success"})

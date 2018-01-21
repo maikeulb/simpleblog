@@ -8,8 +8,7 @@ load_dotenv(dotenv_path)
 
 class Config(object):
 
-    WEBPACK_MANIFEST_PATH = '/build/manifest.json'
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'S3cr3t'
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URI') or \
       'postgresql://postgres:P@ssw0rd!@172.17.0.2/simpleblog'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -19,6 +18,14 @@ class Config(object):
     # LOG_FOLDER = os.path.join(INSTANCE_FOLDER_PATH, 'logs')
     # MAX_CONTENT_LENGTH = 16 * 1024 * 1024
     # PROJECT_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+
+    MAIL_SERVER = os.environ.get('MAIL_SERVER')
+    MAIL_PORT = int(os.environ.get('MAIL_PORT') or 25)
+    MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') is not None
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+    ADMINS = ['michael.sergio.barnes@gmail.com']
+    POSTS_PER_PAGE = 10
 
     DEVELOPMENT = False
     TESTING = False

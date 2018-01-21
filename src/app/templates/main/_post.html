@@ -9,6 +9,10 @@
             {{ post.author.username }}
           </a>
           {% endset %}
+          {{ '%(username)s said %(when)s',
+          username=user_link, when=moment(post.timestamp).fromNow() }}
+          <br>
+          <span id="post{{ post.id }}">{{ post.body }}</span>
       </span>
     </th>
     </tr>

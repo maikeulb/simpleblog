@@ -1,10 +1,9 @@
-from datetime import datetime
+from app.extensions import db
+from datetime import datetime, timedelta
 from hashlib import md5
 from time import time
 from flask import current_app
 from flask_login import UserMixin
-from app.database import Column, Model, SurrogatePK, db, reference_col, \
-    relationship 
 from app.extensions import bcrypt, login
 from app.models.post import Post
 
@@ -15,19 +14,18 @@ followers = db.Table(
     db.Column('followed_id', db.Integer, db.ForeignKey('users.id'))
 )
 
-class User(UserMixin, Model):
-
+class User(UserMixin, db.Model):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True, nullable=False)
     email = db.Column(db.String(120), index=True, unique=True, nullable=False)
-    password = Column(db.Binary(128), nullable=True)
-    first_name = Column(db.String(30), nullable=True)
-    last_name = Column(db.String(30), nullable=True)
+    password = db.Column(db.Binary(128), nullable=True)
+    first_name = db.Column(db.String(30), nullable=True)
+    last_name = db.Column(db.String(30), nullable=True)
     posts = db.relationship('Post', backref='author', lazy='dynamic')
     about_me = db.Column(db.String(140))
-    last_seen = db.Column(db.DateTime)
+    last_seen = db.Column(db.DateTime, default=datetime.utcnow)
     followed = db.relationship(
         'User', secondary=followers,
         primaryjoin=(followers.c.follower_id == id),

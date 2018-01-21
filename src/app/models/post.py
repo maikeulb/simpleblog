@@ -1,12 +1,10 @@
+from app.extensions import db
 from datetime import datetime
 from time import time
 from flask import current_app
-from app.database import Column, Model, SurrogatePK, db, reference_col, \
-    relationship 
 
 
-class Post(Model):
-
+class Post(db.Model):
     __tablename__ = 'posts'
 
     id = db.Column(db.Integer, primary_key=True)

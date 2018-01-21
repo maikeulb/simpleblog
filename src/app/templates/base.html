@@ -19,7 +19,7 @@
 
   <body>
     {% block navbar %}
-    {% include '_navbar.html' %}
+      {% include '/shared/_navbar.html' %}
     {% endblock %}
 
     {% block content %}
@@ -36,7 +36,7 @@
       </div>
     {% endblock %}
 
-    {% include '_footer.html' %}
+    {% include '/shared/_footer.html' %}
 
     {% if config.DEVELOPMENT %}
       <!-- Webpack Dev Mode -->
@@ -46,5 +46,11 @@
       <script src='/static/js/app.bundle.js'></script>
     {% endif %}
     {% block js %}{% endblock %}
+
+    {% block scripts %}
+      {{ super() }}
+      {{ moment.include_moment() }}
+    {% endblock %}
+
   </body>
 </html>
