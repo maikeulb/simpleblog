@@ -3,57 +3,51 @@
 {% block app_content %}
 <main class="ui container">
 
-    <table class = "ui celled padded table">
-        <tr>
-            <td width="256px"><img src="{{ user.avatar(256) }}"></td>
-            <td>
-                <h1>User: {{ user.username }}</h1>
+  <div class="ui items">
+    <div class="item">
 
-                {% if user.about_me %}
-                  <p>{{ user.about_me }}</p>
-                {% endif %}
+      <div class="image">
+        <img src="{{ user.avatar(256) }}">
+      </div>
 
-                {% if user.last_seen %}
-                <p>Last seen on: {{ moment(user.last_seen).format('LLL') }}</p>
-                {% endif %}
+      <div class="content">
 
-                <p>
-                  {{ user.followers.count() }} followers, 
-                  {{ user.followed.count() }} following, 
-                </p>
+        <a class="header">User: {{ user.username }}</a>
 
-                {% if user == current_user %}
-                  <p><a href="{{ url_for('main.edit_profile') }}">Edit your profile</a></p>
-                {% elif not current_user.is_following(user) %}
-                  <p><a href="{{ url_for('main.follow', username=user.username) }}">'Follow'</a></p>
-                {% else %}
-                  <p><a href="{{ url_for('main.unfollow', username=user.username) }}">Unfollow</a></p>
-                {% endif %}
+        <div class="meta">
+          {% if user.last_seen %}
+          <p><span>Last seen on: {{ moment(user.last_seen).format('LLL') }}</span></p>
+          {% endif %}
+          <p>
+            <span>{{ user.followers.count() }} followers </span> 
+            <span>{{ user.followed.count() }} following </span>
+          </p>
+        </div>
 
-            </td>
-        </tr>
-    </table>
+        <div class="description">
+          {% if user.about_me %}
+            <p>{{ user.about_me }}</p>
+          {% endif %}
+        </div>
 
-    {% for post in posts %}
-        {% include 'main/_post.html' %}
-    {% endfor %}
+        {% if user == current_user %}
+          <p><a href="{{ url_for('main.edit_profile') }}">Edit your profile</a></p>
+        {% elif not current_user.is_following(user) %}
+          <p><a href="{{ url_for('main.follow', username=user.username) }}"> Follow</a></p>
+        {% else %}
+          <p><a href="{{ url_for('main.unfollow', username=user.username) }}">Unfollow</a></p>
+        {% endif %}
 
-    <nav aria-label="...">
-      <ul class="pager">
-        <li class="previous{% if not prev_url %} disabled{% endif %}">
-          <a href="{{ prev_url or '#' }}">
-            'Newer posts'
-            <span aria-hidden="true">&larr;</span>
-          </a>
-        </li>
-        <li class="next{% if not next_url %} disabled{% endif %}">
-          <a href="{{ next_url or '#' }}">
-            'Older posts'
-            <span aria-hidden="true">&rarr;</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+
+      </div>
+    </div>
+  </div>
+
+  {% for post in posts %}
+      {% include 'main/_post.html' %}
+  {% endfor %}
+
+  {% include '/shared/_pagination.html' %}
 
 </main>
 {% endblock %}
