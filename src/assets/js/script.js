@@ -3,12 +3,6 @@ import 'semantic-ui-css/semantic.min.js';
 
 window.$ = window.jQuery = require('jquery');
 
-
-import 'toastr/build/toastr.min.css';
-import * as toastr from 'toastr/build/toastr.min.js';
-
-window.toastr = toastr;
-
 $(document)
   .ready(function() {
     // fix main menu to page on passing

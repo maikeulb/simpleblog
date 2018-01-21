@@ -27,6 +27,7 @@ class Config(object):
     ADMINS = ['michael.sergio.barnes@gmail.com']
     POSTS_PER_PAGE = 10
 
+    DEBUG_TB_INTERCEPT_REDIRECTS = False
     DEVELOPMENT = False
     TESTING = False
     PRODUCTION = False

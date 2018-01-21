@@ -7,6 +7,8 @@
     {% else %}
       <title>Welcome to SimpleBlog</title>
     {% endif %}
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js'></script>
     {% if config.DEVELOPMENT %}
       <!-- Webpack Dev Mode -->
       <link rel="stylesheet" href="http://localhost:8080/static/css/app.css">
@@ -24,21 +26,23 @@
 
     {% block content %}
       <div class="container">
-
         {% with messages = get_flashed_messages() %}
           {% if messages %}
             <script>
-              setTimeout(function() {
-                var messages = {{ messages | safe }};
-                for (var i=0; i<messages.length; i++) {
-                  toastr.info(messages[i])
-                }
-              }, 1000);
+              var messages = {{ messages | safe }};
+              for (var i=0; i<messages.length; i++) {
+                new Noty({
+                  theme: 'semanticui',
+                  type: 'info',
+                  text: messages[i]
+                }).setTimeout(3000).show();
+              } 
             </script>
           {% endif %}
         {% endwith %}
 
         {% block app_content %}{% endblock %}
+
       </div>
     {% endblock %}
 
