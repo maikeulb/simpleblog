@@ -2,17 +2,15 @@
   <thead>
     <tr>
       <th class="single line">
-      <img class="ui avatar image" src="/images/wireframe/square-image.png">
+      <img class="ui avatar image" src="{{ post.author.avatar(70) }}" />
       <span>
           {% set user_link %}
           <a href="{{ url_for('main.user', username=post.author.username) }}">
             {{ post.author.username }}
           </a>
           {% endset %}
-          {{ '%(username)s said %(when)s',
-          username=user_link, when=moment(post.timestamp).fromNow() }}
+          {{ user_link }} said {{ moment(post.timestamp).fromNow() }}
           <br>
-          <span id="post{{ post.id }}">{{ post.body }}</span>
       </span>
     </th>
     </tr>

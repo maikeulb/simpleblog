@@ -5,6 +5,11 @@ window.$ = window.jQuery = require('jquery');
 
 import '../css/style.scss';
 
+import 'toastr/build/toastr.min.css';
+import * as toastr from 'toastr/build/toastr.min.js';
+
+window.toastr = toastr;
+
 $(document)
   .ready(function() {
     // fix main menu to page on passing
@@ -25,6 +30,15 @@ $(document)
     $('.main.menu  .ui.dropdown').dropdown({
       on: 'hover'
     });
+  })
+;
+
+$('.message .close')
+  .on('click', function() {
+    $(this)
+      .closest('.message')
+      .transition('fade')
+    ;
   })
 ;
 

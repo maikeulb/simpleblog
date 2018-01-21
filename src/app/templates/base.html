@@ -24,14 +24,20 @@
 
     {% block content %}
       <div class="container">
+
         {% with messages = get_flashed_messages() %}
           {% if messages %}
-            {% for message in messages %}
-              <div class="alert alert-info" role="alert">{{ message }}</div>
-            {% endfor %}
+            <script>
+              setTimeout(function() {
+                var messages = {{ messages | safe }};
+                for (var i=0; i<messages.length; i++) {
+                  toastr.info(messages[i])
+                }
+              }, 500);
+            </script>
           {% endif %}
         {% endwith %}
-        {# application content needs to be provided in the app_content block #}
+
         {% block app_content %}{% endblock %}
       </div>
     {% endblock %}
@@ -48,7 +54,6 @@
     {% block js %}{% endblock %}
 
     {% block scripts %}
-      {{ super() }}
       {{ moment.include_moment() }}
     {% endblock %}
 

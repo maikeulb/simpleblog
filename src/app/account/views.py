@@ -22,7 +22,7 @@ from app.account.forms import (
 )
 from app.models import User
 from app.extensions import login, db
-from app.auth.email import send_password_reset_email
+from app.account.email import send_password_reset_email
 
 
 @account.route('/login', methods=['GET', 'POST'])

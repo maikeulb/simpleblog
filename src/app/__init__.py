@@ -10,7 +10,8 @@ from flask import (
 from app import commands, models
 # import app.models
 from app.account import account as account_bp
-from app.extensions import bcrypt, cache, csrf_protect, db, debug_toolbar, login, migrate
+from app.extensions import bcrypt, cache, csrf_protect, db, debug_toolbar, \
+login, migrate, mail, moment
 from app.main import main as main_bp
 
 Config = eval(os.environ['FLASK_APP_CONFIG'])

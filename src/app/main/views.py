@@ -40,7 +40,9 @@ def index():
     return render_template('main/index.html',
                            title='Home',
                            form=form,
-                           posts=posts)
+                           posts=posts.items, 
+                           next_url=next_url,
+                           prev_url=prev_url)
 
 @main.route('/explore')
 @login_required
@@ -54,7 +56,9 @@ def explore():
         if posts.has_prev else None
     return render_template('main/index.html', 
                            title='Explore', 
-                           posts=posts)
+                           posts=posts.items, 
+                           next_url=next_url,
+                           prev_url=prev_url)
 
 
 @main.route('/user/<username>')
@@ -68,7 +72,11 @@ def user(username):
                        page=posts.next_num) if posts.has_next else None
     prev_url = url_for('main.user', username=user.username,
                        page=posts.prev_num) if posts.has_prev else None
-    return render_template('main/profile.html', user=user, posts=posts)
+    return render_template('main/profile.html', 
+                           user=user, 
+                           posts=posts.items,
+                           next_url=next_url, 
+                           prev_url=prev_url)
 
 @main.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
@@ -87,7 +95,7 @@ def edit_profile():
                            title='Edit Profile', 
                            form=form)
 
-@bp.route('/follow/<username>')
+@main.route('/follow/<username>')
 @login_required
 def follow(username):
     user = User.query.filter_by(username=username).first()
@@ -103,7 +111,7 @@ def follow(username):
     return redirect(url_for('main.user', username=username))
 
 
-@bp.route('/unfollow/<username>')
+@main.route('/unfollow/<username>')
 @login_required
 def unfollow(username):
     user = User.query.filter_by(username=username).first()
