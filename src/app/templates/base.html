@@ -33,7 +33,7 @@
                 for (var i=0; i<messages.length; i++) {
                   toastr.info(messages[i])
                 }
-              }, 500);
+              }, 1000);
             </script>
           {% endif %}
         {% endwith %}
@@ -51,7 +51,6 @@
       <!-- Static Build Mode -->
       <script src='/static/js/app.bundle.js'></script>
     {% endif %}
-    {% block js %}{% endblock %}
 
     {% block scripts %}
       {{ moment.include_moment() }}
