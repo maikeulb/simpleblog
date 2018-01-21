@@ -27,6 +27,7 @@ module.exports = merge([
   parts.extractCSS({
     use: ['css-loader', 'sass-loader', parts.autoprefix()],
   }),
+  parts.copyWebpackPlugin(),
   parts.loadFonts({
     options: {
       // name: "[name].[hash:8].[ext]",

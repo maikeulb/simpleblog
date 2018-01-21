@@ -6,6 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const UglifyWebpackPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const cssnano = require("cssnano");
 
 const assetsDir = path.join('assets');
@@ -17,6 +18,14 @@ exports.PATHS = {
   output: path.resolve(buildDir),
   public: path.join('static'),
 };
+
+exports.copyWebpackPlugin = () => ({
+  plugins: [
+    new CopyWebpackPlugin ([{ 
+      from: 'assets/favicon/favicon.ico', to: 'favicon.ico' 
+    }]),
+  ],
+});
 
 exports.minifyCSS = ({ options }) => ({
   plugins: [
