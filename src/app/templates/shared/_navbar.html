@@ -4,13 +4,19 @@
         <img class="logo" id="logo_sm">
         Simple Blog
       </a>
-                {% if g.search_form %}
-                <form class="navbar-form navbar-left" method="get" action="{{ url_for('main.search') }}">
-                    <div class="form-group">
-                        {{ g.search_form.q(size=20, class='form-control', placeholder=g.search_form.q.label.text) }}
-                    </div>
-                </form>
-                {% endif %}
+
+      {% if g.search_form %}
+        <div class="ui right item">
+          <div class="item">
+            <form class="ui form" method="get" action="{{ url_for('main.search') }}">
+              <div class="field ui icon input">
+                {{ g.search_form.q(placeholder=g.search_form.q.label.text) }}
+                <i class="search link icon"></i>
+              </div>
+            </form>
+          </div>
+        </div>
+      {% endif %}
 
       <a href="{{ url_for('main.explore') }}" class="item">Explore</a>
       {% if current_user.is_anonymous %}
@@ -19,7 +25,7 @@
         <a href="{{ url_for('account.register') }}" class="item">Register</a>
       </div>
       {% else %}
-        <a href="{{ url_for('main.messages') }}">Messages
+        <a href="{{ url_for('main.messages') }}" class="item">Messages
             {% set new_messages = current_user.new_messages() %}
             <span id="message_count" class="badge"
                   style="visibility: {% if new_messages %}visible
