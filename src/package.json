@@ -7,7 +7,6 @@
     "babel-core": "^6.26.0",
     "css-loader": "^0.28.9",
     "nodemon": "^1.12.1",
-    "semantic-ui": "^2.2.13",
     "semantic-ui-css": "^2.2.12",
     "toastr": "^2.1.4"
   },

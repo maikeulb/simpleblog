@@ -13,6 +13,7 @@ from app.account import account as account_bp
 from app.extensions import bcrypt, cache, csrf_protect, db, debug_toolbar, \
 login, migrate, mail, moment
 from app.main import main as main_bp
+from elasticsearch import Elasticsearch
 
 Config = eval(os.environ['FLASK_APP_CONFIG'])
 
@@ -20,6 +21,8 @@ Config = eval(os.environ['FLASK_APP_CONFIG'])
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
+    app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']]) \
+        if app.config['ELASTICSEARCH_URL'] else None
     register_blueprints(app)
     register_extensions(app)
     register_errorhandlers(app)
