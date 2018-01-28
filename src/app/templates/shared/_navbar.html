@@ -19,7 +19,14 @@
         <a href="{{ url_for('account.register') }}" class="item">Register</a>
       </div>
       {% else %}
-        <a href="{{ url_for('main.messages') }}">Messages</a>
+        <a href="{{ url_for('main.messages') }}">Messages
+            {% set new_messages = current_user.new_messages() %}
+            <span id="message_count" class="badge"
+                  style="visibility: {% if new_messages %}visible
+                                     {% else %}hidden{% endif %};">
+                {{ new_messages }}
+            </span>
+        </a>
       <div class="ui right floated dropdown item">
         Hello {{ current_user.username }} <i class="dropdown icon"></i>
         <div class="menu">
