@@ -6,6 +6,9 @@ from flask import current_app
 from flask_login import UserMixin
 from app.extensions import bcrypt, login
 from app.models.post import Post
+from app.models.message import Message
+from app.models.notification import Notification
+import json
 import jwt
 
 
@@ -104,6 +107,18 @@ class User(UserMixin, db.Model):
         digest = md5(self.email.lower().encode('utf-8')).hexdigest()
         return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(
             digest, size)
+
+    def new_messages(self):
+        last_read_time = self.last_message_read_time or datetime(1900, 1, 1)
+        return Message.query.filter_by(recipient=self).filter(
+            Message.timestamp > last_read_time).count()
+
+    def add_notification(self, name, data):
+        self.notifications.filter_by(name=name).delete()
+        n = Notification(name=name, payload_json=json.dumps(data), user=self)
+        db.session.add(n)
+        return n
+
 
     # @classmethod
     # def authenticate(cls, login, password):

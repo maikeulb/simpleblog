@@ -10,8 +10,18 @@ from flask import (
 from flask_login import current_user, login_required
 from app.extensions import login, db
 from app.main import main
-from app.main.forms import EditProfileForm, PostForm, SearchForm
-from app.models import User, Post
+from app.main.forms import (
+    EditProfileForm, 
+    PostForm, 
+    SearchForm, 
+    MessageForm
+)
+from app.models import (
+    User, 
+    Post, 
+    Message, 
+    Notification
+)
 
 @main.before_app_request
 def before_request():
@@ -154,9 +164,9 @@ def send_message(recipient):
         db.session.add(msg)
         user.add_notification('unread_message_count', user.new_messages())
         db.session.commit()
-        flash(_('Your message has been sent.'))
+        flash('Your message has been sent.')
         return redirect(url_for('main.user', username=recipient))
-    return render_template('send_message.html', title=_('Send Message'),
+    return render_template('send_message.html', title='Send Message',
                            form=form, recipient=recipient)
 
 

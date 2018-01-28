@@ -3,6 +3,7 @@ from datetime import datetime
 from time import time
 from flask import current_app
 from app.search import add_to_index, remove_from_index, query_index
+from app.models.message import Message
 
 
 class SearchableMixin(object):
