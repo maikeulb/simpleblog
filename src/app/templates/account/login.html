@@ -56,8 +56,6 @@
   </div>
 
     {% block js %}
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.js"></script>
     <script>
     $('.message .close')
       .on('click', function() {
@@ -67,38 +65,16 @@
         ;
       })
     ;
+
     $('.ui.form')
       .form({
         fields: {
-          username: {
-            identifier: 'username',
-            rules     : [
-               {
-                  type  : 'empty',
-                  prompt: 'Please enter you comment.'
-               }
-            ]
-          }
-        }
-      })
-      .api({
-        url: '{{ url_for('main.process') }}',
-        action       : 'new lead comment',
-        method       : 'POST',
-        serializeForm: true,
-        urlData      : {
-            id: $('#username').val()
-        },
-        onSuccess    : function(response) {
-            alert('success');
-            console.log(response);
-        },
-        onFailure    : function(response) {
-            alert('failure');
-            console.log(response);
+          username : 'empty',
+          email: ['email', 'empty'],
         }
       })
     ;
+
     </script>
      {% endblock %}
 

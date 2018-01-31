@@ -53,20 +53,6 @@ def index():
                            next_url=next_url,
                            prev_url=prev_url)
 
-@main.route('/process', methods=['POST'])
-def process():
-
-	email = request.form['email']
-	name = request.form['name']
-
-	if name and email:
-		newName = name[::-1]
-
-		return jsonify({'name' : newName})
-
-	return jsonify({'error' : 'Missing data!'})
-
-
 @main.route('/explore')
 @login_required
 def explore():
