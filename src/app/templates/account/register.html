@@ -15,32 +15,40 @@
         <div class="field">
           {{ form.username.label }}
           {{ form.username }}
-          {% for error in form.username.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-          {% endfor %}
         </div>
         <div class="field">
           {{ form.email.label }}
           {{ form.email }}
-          {% for error in form.email.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-          {% endfor %}
         </div>
         <div class="field">
           {{ form.password.label }}
           {{ form.password }}
-          {% for error in form.password.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-          {% endfor %}
         </div>
         <div class="field">
           {{ form.confirm.label }}
           {{ form.confirm }}
-          {% for error in form.confirm.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-          {% endfor %}
         </div>
-      {{ form.submit(class="ui fluid large submit button") }}
+        {{ form.submit(class="ui fluid large submit button") }}
+        {% if form.errors %}
+          <div class="ui negative message">
+            <i class="close icon"></i>
+            {% for error in form.username.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+            {% for error in form.email.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+            {% for error in form.password.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+            {% for error in form.confirm.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </div>
+        {% endif%}
+        {% if not form.errors %}
+          <div class="ui error message"></div>
+        {% endif%}
     </div>
   </form>
 
@@ -49,6 +57,29 @@
       Already registered? <a href="{{ url_for('account.login') }}">Click to Login!</a>
     </div>
   </div>
+
+    {% block js %}
+    <script>
+    $('.message .close')
+      .on('click', function() {
+        $(this)
+          .closest('.message')
+          .transition('fade')
+        ;
+      })
+    ;
+    $('.ui.form')
+      .form({
+        fields: {
+          username : 'empty',
+          email: ['email', 'empty'],
+          password : ['minLength[6]', 'empty'],
+          confirm: ['match[password]', 'empty'],
+        }
+      })
+    ;
+    </script>
+     {% endblock %}
 
 </main>
 {% endblock %}

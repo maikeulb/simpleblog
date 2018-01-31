@@ -62,7 +62,6 @@ def register_extensions(app):
                 credentials=auth, secure=secure)
             mail_handler.setLevel(logging.ERROR)
             app.logger.addHandler(mail_handler)
-
     return None
 
 
@@ -83,6 +82,7 @@ def register_commands(app):
     app.cli.add_command(commands.test)
     app.cli.add_command(commands.lint)
     app.cli.add_command(commands.clean)
+    app.cli.add_command(commands.urls)
     app.cli.add_command(commands.urls)
 
 def register_shellcontext(app):

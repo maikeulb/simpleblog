@@ -1,8 +1,7 @@
 import os
+import click
 from glob import glob
 from subprocess import call
-
-import click
 from flask import current_app
 from flask.cli import with_appcontext
 from werkzeug.exceptions import MethodNotAllowed, NotFound
@@ -93,7 +92,6 @@ def urls(url, order):
 
     if column_length >= 2:
         max_endpoint_length = max(len(str(r[1])) for r in rows)
-        # max_endpoint_length = max(rows, key=len)
         max_endpoint_length = (
             max_endpoint_length if max_endpoint_length > 8 else 8)
         str_template += '  {:' + str(max_endpoint_length) + '}'
@@ -111,17 +109,3 @@ def urls(url, order):
 
     for row in rows:
         click.echo(str_template.format(*row[:column_length]))
-
-    # @app.cli.command('init-db')
-    # @click.argument('username')
-    # @click.argument('password')
-    # @click.argument('email')
-    # def init_db(username, password, email):
-    #     """Initialize the DB with a single user."""
-    #     db.drop_all()
-    #     db.create_all()
-    #     print(f"Creating user '{username}' with password '{password}' and email '{email}'")
-    #     admin = User(username, password, email, is_admin=True, is_verified=True)
-    #     db.session.add(admin)
-    #     db.session.commit()
-

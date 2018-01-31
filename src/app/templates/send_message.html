@@ -16,14 +16,32 @@
             <div class="field">
               {{ form.message.label }}<br>
               {{ form.message }}
-              {% for error in form.message.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-              {% endfor %}
             </div>
           {{ form.submit(class="ui button") }}
+          <div class="ui error message"></div>
         </div>
       </form>
     {% endif %}
+
+    {% block js %}
+    <script>
+    $('.message .close')
+      .on('click', function() {
+        $(this)
+          .closest('.message')
+          .transition('fade')
+        ;
+      })
+    ;
+    $('.ui.form')
+      .form({
+        fields: {
+          post: ['minLength[4]', 'maxLength[140]' 'empty'],
+        }
+      })
+    ;
+    </script>
+    {% endblock %}
 
   </main>
 {% endblock %}
