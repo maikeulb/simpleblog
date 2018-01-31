@@ -22,6 +22,7 @@ from app.models import (
     Message, 
     Notification
 )
+from flask import jsonify
 
 @main.before_app_request
 def before_request():

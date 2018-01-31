@@ -26,7 +26,7 @@ $(document)
   })
 ;
 
-import '../css/style.scss';
+import '../css/styles.scss';
 
 import logoSmall from '../images/logo.png';
 var logoImg = document.getElementById('logo_sm');

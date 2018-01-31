@@ -1,7 +1,7 @@
 from app.extensions import db
 from time import time
 from flask import current_app
-
+import json
 
 class Notification(db.Model):
     id = db.Column(db.Integer, primary_key=True)

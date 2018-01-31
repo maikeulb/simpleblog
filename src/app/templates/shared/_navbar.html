@@ -1,12 +1,13 @@
-  <div class="ui borderless main huge menu">
+<nav>
+  <div class="ui borderless main menu">
     <div class="ui text container">
       <a class="header item" href="{{ url_for('main.index') }}">
         <img class="logo" id="logo_sm">
         Simple Blog
       </a>
 
+      <a href="{{ url_for('main.explore') }}" class="item">Explore</a>
       {% if g.search_form %}
-        <div class="ui right item">
           <div class="item">
             <form class="ui form" method="get" action="{{ url_for('main.search') }}">
               <div class="field ui icon input">
@@ -15,29 +16,28 @@
               </div>
             </form>
           </div>
-        </div>
       {% endif %}
 
-      <a href="{{ url_for('main.explore') }}" class="item">Explore</a>
       {% if current_user.is_anonymous %}
       <div class="ui right item">
         <a href="{{ url_for('account.login') }}" class="item">Login</a>
         <a href="{{ url_for('account.register') }}" class="item">Register</a>
       </div>
       {% else %}
-        <a href="{{ url_for('main.messages') }}" class="item">Messages
-            {% set new_messages = current_user.new_messages() %}
-            <span id="message_count" class="badge"
-                  style="visibility: {% if new_messages %}visible
-                                     {% else %}hidden{% endif %};">
-                {{ new_messages }}
-            </span>
-        </a>
+
       <div class="ui right floated dropdown item">
         Hello {{ current_user.username }} <i class="dropdown icon"></i>
         <div class="menu">
           <a href="{{ url_for('main.user', username=current_user.username) }}"
             class="item">Profile</a>
+        <a href="{{ url_for('main.messages') }}" class="item">Messages
+            {% set new_messages = current_user.new_messages() %}
+            <span id="message_count" class="dynamic_badge" 
+              data-badge="{{ new_messages }}"
+              style="visibility: {% if new_messages %}visible
+                                 {% else %}hidden{% endif %};">
+            </span>
+        </a>
           <div class="divider"></div>
           <a href="{{ url_for('account.logout') }}" class="item">Logout</a>
         </div>
