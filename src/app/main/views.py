@@ -1,27 +1,24 @@
 from datetime import datetime
-from flask import (
+from flask import(
     render_template, 
     flash, redirect, 
     url_for, 
     request, 
     g,
-    current_app
-)
+    current_app)
 from flask_login import current_user, login_required
 from app.extensions import login, db
 from app.main import main
-from app.main.forms import (
+from app.main.forms import(
     EditProfileForm, 
     PostForm, 
     SearchForm, 
-    MessageForm
-)
-from app.models import (
+    MessageForm)
+from app.models import(
     User, 
     Post, 
     Message, 
-    Notification
-)
+    Notification)
 from flask import jsonify
 
 @main.before_app_request
@@ -37,19 +34,19 @@ def before_request():
 def index():
     form = PostForm()
     if form.validate_on_submit():
-        post = Post(body=form.post.data, 
-                    author=current_user)
+        post = Post(body=form.post.data, author=current_user)
         db.session.add(post)
         db.session.commit()
         flash('Your post is now live!')
         return redirect(url_for('main.index'))
-    page = request.args.get('page', 1, type=int)
-    posts = current_user.followed_posts().paginate(
-        page, current_app.config['POSTS_PER_PAGE'], False)
-    next_url = url_for('main.explore', page=posts.next_num) \
-        if posts.has_next else None
-    prev_url = url_for('main.explore', page=posts.prev_num) \
-        if posts.has_prev else None
+    elif request.method == 'GET':
+        page = request.args.get('page', 1, type=int)
+        posts = current_user.followed_posts().paginate(
+            page, current_app.config['POSTS_PER_PAGE'], False)
+        next_url = url_for('main.explore', page=posts.next_num) \
+            if posts.has_next else None
+        prev_url = url_for('main.explore', page=posts.prev_num) \
+            if posts.has_prev else None
     return render_template('main/index.html',
                            title='Home',
                            form=form,
@@ -80,12 +77,13 @@ def user(username):
     user = User.query.filter_by(username=username).first_or_404()
     page = request.args.get('page', 1, type=int)
     posts = user.posts.order_by(Post.timestamp.desc()).paginate(
-        page, current_app.config['POSTS_PER_PAGE'], False)
+                                page, current_app.config['POSTS_PER_PAGE'], False)
     next_url = url_for('main.user', username=user.username,
-                       page=posts.next_num) if posts.has_next else None
+        page=posts.next_num) if posts.has_next else None
     prev_url = url_for('main.user', username=user.username,
-                       page=posts.prev_num) if posts.has_prev else None
+        page=posts.prev_num) if posts.has_prev else None
     return render_template('main/profile.html', 
+                           title='User',
                            user=user, 
                            posts=posts.items,
                            next_url=next_url, 
@@ -108,7 +106,7 @@ def edit_profile():
                            title='Edit Profile', 
                            form=form)
 
-@main.route('/follow/<username>')
+@main.route('/follow/<username>') #api
 @login_required
 def follow(username):
     user = User.query.filter_by(username=username).first()
@@ -124,7 +122,7 @@ def follow(username):
     return redirect(url_for('main.user', username=username))
 
 
-@main.route('/unfollow/<username>')
+@main.route('/unfollow/<username>') #api
 @login_required
 def unfollow(username):
     user = User.query.filter_by(username=username).first()
@@ -139,6 +137,7 @@ def unfollow(username):
     # flash('You are not following %(username)s.', username=username)
     return redirect(url_for('main.user', username=username))
 
+
 @main.route('/search')
 @login_required
 def search():
@@ -151,8 +150,11 @@ def search():
         if total > page * current_app.config['POSTS_PER_PAGE'] else None
     prev_url = url_for('main.search', q=g.search_form.q.data, page=page - 1) \
         if page > 1 else None
-    return render_template('search.html', title='Search', posts=posts,
-                           next_url=next_url, prev_url=prev_url)
+    return render_template('search.html', 
+                           title='Search', 
+                           posts=posts,
+                           next_url=next_url, 
+                           prev_url=prev_url)
 
 
 @main.route('/send_message/<recipient>', methods=['GET', 'POST'])
@@ -168,8 +170,10 @@ def send_message(recipient):
         db.session.commit()
         flash('Your message has been sent.')
         return redirect(url_for('main.user', username=recipient))
-    return render_template('send_message.html', title='Send Message',
-                           form=form, recipient=recipient)
+    return render_template('send_message.html', 
+                           title='Send Message',
+                           form=form, 
+                           recipient=recipient)
 
 
 @main.route('/messages')
@@ -186,11 +190,14 @@ def messages():
         if messages.has_next else None
     prev_url = url_for('main.messages', page=messages.prev_num) \
         if messages.has_prev else None
-    return render_template('messages.html', messages=messages.items,
-                           next_url=next_url, prev_url=prev_url)
+    return render_template('messages.html', 
+                           title='Messages',
+                           messages=messages.items,
+                           next_url=next_url, 
+                           prev_url=prev_url)
 
 
-@main.route('/notifications')
+@main.route('/notifications') #api
 @login_required
 def notifications():
     since = request.args.get('since', 0.0, type=float)

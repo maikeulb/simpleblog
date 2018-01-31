@@ -3,10 +3,11 @@ from time import time
 from flask import current_app
 import json
 
+
 class Notification(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(128), index=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    name = db.Column(db.String(128), index=True)
     timestamp = db.Column(db.Float, index=True, default=time)
     payload_json = db.Column(db.Text)
 

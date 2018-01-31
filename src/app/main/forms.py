@@ -4,6 +4,7 @@ from wtforms import StringField, TextAreaField, SubmitField
 from wtforms.validators import DataRequired, Length
 from app.models import User
 
+
 class EditProfileForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     about_me = TextAreaField('About me', validators=[Length(min=0, max=140)])
@@ -18,10 +19,6 @@ class EditProfileForm(FlaskForm):
             user = User.query.filter_by(username=self.username.data).first()
             if user is not None:
                 raise ValidationError('Please use a different username.')
-
-    # def validate_avatar_file(form, field):
-    #     if field.data and not allowed_file(field.data.filename):
-    #         raise ValidationError("Please upload files with extensions: %s" %
 
 class PostForm(FlaskForm):
     post = TextAreaField('Say something', validators=[DataRequired()])

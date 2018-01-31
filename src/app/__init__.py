@@ -1,17 +1,23 @@
 import config
 import os
 
-from flask import (
+from flask import(
     Flask, 
     render_template, 
     request, 
-    current_app
-)
+    current_app)
 from app import commands, models
-# import app.models
 from app.account import account as account_bp
-from app.extensions import bcrypt, cache, csrf_protect, db, debug_toolbar, \
-login, migrate, mail, moment
+from app.extensions import(
+    bcrypt, 
+    cache, 
+    csrf_protect, 
+    db, 
+    debug_toolbar, 
+    login, 
+    migrate, 
+    mail, 
+    moment)
 from app.main import main as main_bp
 from elasticsearch import Elasticsearch
 
@@ -62,7 +68,6 @@ def register_extensions(app):
 
 def register_blueprints(app):
     app.register_blueprint(account_bp, url_prefix='/account')
-    # app.register_blueprint(errors_bp)
     app.register_blueprint(main_bp)
     return None
 
@@ -79,11 +84,6 @@ def register_commands(app):
     app.cli.add_command(commands.lint)
     app.cli.add_command(commands.clean)
     app.cli.add_command(commands.urls)
-
-# def configure_template_filters(app):
-#     app.jinja_env.filters["pretty_date"] = pretty_date
-#     app.jinja_env.filters["format_date"] = format_date
-#     app.jinja_env.filters["nl2br"] = nl2br
 
 def register_shellcontext(app):
     def shell_context():

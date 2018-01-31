@@ -1,23 +1,23 @@
 from flask import (
-    render_template, 
-    flash, 
-    redirect, 
-    url_for, 
+    render_template,
+    flash,
+    redirect,
+    url_for,
     request
 )
 from werkzeug.urls import url_parse
 from flask_login import (
-    login_user, 
+    login_user,
     logout_user,
     current_user,
     login_required
 )
 from werkzeug.urls import url_parse
 from app.account import account
-from app.account.forms import ( 
-    LoginForm, 
+from app.account.forms import (
+    LoginForm,
     RegistrationForm,
-    ResetPasswordRequestForm, 
+    ResetPasswordRequestForm,
     ResetPasswordForm
 )
 from app.models import User
@@ -41,9 +41,10 @@ def login():
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('main.index')
         return redirect(next_page)
-    return render_template('account/login.html', 
-                           title='Sign In', 
+    return render_template('account/login.html',
+                           title='Sign In',
                            form=form)
+
 
 @account.route('/logout')
 def logout():
@@ -64,9 +65,10 @@ def register():
         db.session.commit()
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('account.login'))
-    return render_template('account/register.html', 
+    return render_template('account/register.html',
                            title='Register',
                            form=form)
+
 
 @account.route('/reset_password_request', methods=['GET', 'POST'])
 def reset_password_request():
@@ -77,12 +79,12 @@ def reset_password_request():
         user = User.query.filter_by(email=form.email.data).first()
         if user:
             send_password_reset_email(user)
-        flash(
-            'Check your email for the instructions to reset your password')
+        flash('Check your email for the instructions to reset your password')
         return redirect(url_for('account.login'))
     return render_template('account/reset_password_request.html',
-                           title='Reset Password', 
+                           title='Reset Password',
                            form=form)
+
 
 @account.route('/reset_password/<token>', methods=['GET', 'POST'])
 def reset_password(token):
@@ -97,5 +99,5 @@ def reset_password(token):
         db.session.commit()
         flash('Your password has been reset.')
         return redirect(url_for('account.login'))
-    return render_template('account/reset_password.html', 
+    return render_template('account/reset_password.html',
                            form=form)

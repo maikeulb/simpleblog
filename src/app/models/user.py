@@ -30,22 +30,28 @@ class User(UserMixin, db.Model):
     posts = db.relationship('Post', backref='author', lazy='dynamic')
     about_me = db.Column(db.String(140))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
+    last_message_read_time = db.Column(db.DateTime)
+
     followed = db.relationship(
-        'User', secondary=followers,
+        'User', 
+        secondary=followers,
         primaryjoin=(followers.c.follower_id == id),
         secondaryjoin=(followers.c.followed_id == id),
         backref=db.backref('followers', lazy='dynamic'), lazy='dynamic')
-
-    messages_sent = db.relationship('Message',
-                                    foreign_keys='Message.sender_id',
-                                    backref='author', lazy='dynamic')
-    messages_received = db.relationship('Message',
-                                        foreign_keys='Message.recipient_id',
-                                        backref='recipient', lazy='dynamic')
-    last_message_read_time = db.Column(db.DateTime)
-
-    notifications = db.relationship('Notification', backref='user',
-                                    lazy='dynamic')
+    messages_sent = db.relationship(
+        'Message', 
+        foreign_keys='Message.sender_id',
+        backref='author', 
+        lazy='dynamic')
+    messages_received = db.relationship(
+        'Message',
+        foreign_keys='Message.recipient_id',
+        backref='recipient', 
+        lazy='dynamic')
+    notifications = db.relationship(
+        'Notification', 
+        backref='user', 
+        lazy='dynamic')
 
     def __init__(self, username, email, password=None, **kwargs):
         db.Model.__init__(self, username=username, email=email, **kwargs)
@@ -53,9 +59,6 @@ class User(UserMixin, db.Model):
             self.set_password(password)
         else:
             self.password = None
-
-    def __repr__(self):
-        return '<User {}>'.format(self.username)
 
     def set_password(self, password):
         self.password = bcrypt.generate_password_hash(password)
@@ -97,7 +100,6 @@ class User(UserMixin, db.Model):
             return
         return User.query.get(id)
 
-
     @property
     def full_name(self):
         """Full user name."""
@@ -118,22 +120,6 @@ class User(UserMixin, db.Model):
         n = Notification(name=name, payload_json=json.dumps(data), user=self)
         db.session.add(n)
         return n
-
-
-    # @classmethod
-    # def authenticate(cls, login, password):
-    #     user = cls.query.filter(db.or_(
-    #         User.name == login, User.email == login)).first()
-    #     if user:
-    #         authenticated = user.check_password(password)
-    #     else:
-    #         authenticated = False
-    #     return user, authenticated
-
-    # @classmethod
-    # def get_by_id(cls, user_id):
-    #     return cls.query.filter_by(id=user_id).first_or_404()
-
 
 
 @login.user_loader
