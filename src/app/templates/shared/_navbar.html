@@ -32,11 +32,13 @@
             class="item">Profile</a>
         <a href="{{ url_for('main.messages') }}" class="item">Messages
             {% set new_messages = current_user.new_messages() %}
+
             <span id="message_count" class="dynamic_badge" 
               data-badge="{{ new_messages }}"
               style="visibility: {% if new_messages %}visible
                                  {% else %}hidden{% endif %};">
             </span>
+
         </a>
           <div class="divider"></div>
           <a href="{{ url_for('account.logout') }}" class="item">Logout</a>

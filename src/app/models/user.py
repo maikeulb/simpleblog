@@ -25,31 +25,40 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(64), index=True, unique=True, nullable=False)
     email = db.Column(db.String(120), index=True, unique=True, nullable=False)
     password = db.Column(db.Binary(128), nullable=True)
-    posts = db.relationship('Post', backref='author', lazy='dynamic')
     about_me = db.Column(db.String(140))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
     last_message_read_time = db.Column(db.DateTime)
 
+    posts = db.relationship(
+        'Post', 
+        backref='author', 
+        lazy='dynamic'
+    )
     followed = db.relationship(
         'User', 
         secondary=followers,
         primaryjoin=(followers.c.follower_id == id),
         secondaryjoin=(followers.c.followed_id == id),
-        backref=db.backref('followers', lazy='dynamic'), lazy='dynamic')
+        backref=db.backref('followers', lazy='dynamic'),
+        lazy='dynamic'
+    )
     messages_sent = db.relationship(
         'Message', 
         foreign_keys='Message.sender_id',
         backref='author', 
-        lazy='dynamic')
+        lazy='dynamic'
+    )
     messages_received = db.relationship(
         'Message',
         foreign_keys='Message.recipient_id',
         backref='recipient', 
-        lazy='dynamic')
+        lazy='dynamic'
+    )
     notifications = db.relationship(
         'Notification', 
         backref='user', 
-        lazy='dynamic')
+        lazy='dynamic'
+    )
 
     def __init__(self, username, email, password=None, **kwargs):
         db.Model.__init__(self, username=username, email=email, **kwargs)
@@ -78,7 +87,8 @@ class User(UserMixin, db.Model):
 
     def followed_posts(self):
         followed = Post.query.join(
-            followers, (followers.c.followed_id == Post.user_id)).filter(
+            followers, 
+            (followers.c.followed_id == Post.user_id)).filter(
                 followers.c.follower_id == self.id)
         own = Post.query.filter_by(user_id=self.id)
         return followed.union(own).order_by(Post.timestamp.desc())
