@@ -5,6 +5,9 @@ import json
 
 
 class Notification(db.Model):
+
+    __tablename__ = 'notifications'
+
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     name = db.Column(db.String(128), index=True)

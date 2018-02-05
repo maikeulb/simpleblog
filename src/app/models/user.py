@@ -42,18 +42,21 @@ class User(UserMixin, db.Model):
         backref=db.backref('followers', lazy='dynamic'),
         lazy='dynamic'
     )
+
     messages_sent = db.relationship(
         'Message', 
         foreign_keys='Message.sender_id',
         backref='author', 
         lazy='dynamic'
     )
+
     messages_received = db.relationship(
         'Message',
         foreign_keys='Message.recipient_id',
         backref='recipient', 
         lazy='dynamic'
     )
+
     notifications = db.relationship(
         'Notification', 
         backref='user', 
