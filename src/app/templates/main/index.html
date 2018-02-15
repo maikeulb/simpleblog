@@ -29,25 +29,26 @@
 
     {% include '/shared/_pagination.html' %}
 
-    {% block js %}
-    <script>
-    $('.message .close')
-      .on('click', function() {
-        $(this)
-          .closest('.message')
-          .transition('fade')
-        ;
-      })
-    ;
-    $('.ui.form')
-      .form({
-        fields: {
-          post: ['minLength[4]', 'empty'],
-        }
-      })
-    ;
-    </script>
-    {% endblock %}
-
   </main>
 {% endblock %}
+
+{% block js %}
+<script>
+$('.message .close')
+  .on('click', function() {
+    $(this)
+      .closest('.message')
+      .transition('fade')
+    ;
+  })
+;
+$('.ui.form')
+  .form({
+    fields: {
+      post: ['minLength[4]', 'empty'],
+    }
+  })
+;
+</script>
+{% endblock %}
+
