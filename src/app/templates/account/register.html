@@ -58,9 +58,11 @@
     </div>
   </div>
 
-    {% block js %}
-    <script>
+</main>
+{% endblock %}
 
+{% block js %}
+<script>
     $('.message .close')
       .on('click', function() {
         $(this)
@@ -69,7 +71,6 @@
         ;
       })
     ;
-
     $('.ui.form')
       .form({
         fields: {
@@ -80,9 +81,6 @@
         }
       })
     ;
-
-    </script>
-     {% endblock %}
-
-</main>
+</script>
 {% endblock %}
+

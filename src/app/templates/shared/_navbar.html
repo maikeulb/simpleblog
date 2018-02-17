@@ -23,8 +23,8 @@
         <a href="{{ url_for('account.login') }}" class="item">Login</a>
         <a href="{{ url_for('account.register') }}" class="item">Register</a>
       </div>
-      {% else %}
 
+      {% else %}
       <div class="ui right floated dropdown item">
         Hello {{ current_user.username }} <i class="dropdown icon"></i>
         <div class="menu">
@@ -45,6 +45,7 @@
         </div>
       </div>
       {% endif %}
+
     </div>
   </div>
 </nav>

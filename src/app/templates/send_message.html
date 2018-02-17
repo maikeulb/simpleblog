@@ -23,25 +23,26 @@
       </form>
     {% endif %}
 
-    {% block js %}
-    <script>
-    $('.message .close')
-      .on('click', function() {
-        $(this)
-          .closest('.message')
-          .transition('fade')
-        ;
-      })
-    ;
-    $('.ui.form')
-      .form({
-        fields: {
-          post: ['minLength[4]', 'maxLength[140]' 'empty'],
-        }
-      })
-    ;
-    </script>
-    {% endblock %}
-
   </main>
 {% endblock %}
+
+{% block js %}
+<script>
+$('.message .close')
+  .on('click', function() {
+    $(this)
+      .closest('.message')
+      .transition('fade')
+    ;
+  })
+;
+$('.ui.form')
+  .form({
+    fields: {
+      post: ['minLength[4]', 'maxLength[140]' 'empty'],
+    }
+  })
+;
+</script>
+{% endblock %}
+
