@@ -1,6 +1,8 @@
 import os
 import click
 from glob import glob
+from app.extensions import db
+from app.models import User
 from subprocess import call
 from flask import current_app
 from flask.cli import with_appcontext
@@ -11,6 +13,19 @@ PROJECT_ROOT = os.path.join(HERE, os.pardir)
 TEST_PATH = os.path.join(PROJECT_ROOT, 'tests')
 
 def register(app):
+
+    @app.cli.command('init-db')
+    @click.argument('username')
+    @click.argument('password')
+    @click.argument('email')
+    def init_db(username, password, email):
+        """Initialize the DB with a single user."""
+        db.drop_all()
+        db.create_all()
+        admin = User(username, password, email)
+        db.session.add(admin)
+        db.session.commit()
+
     @app.cli.group()
     def translate():
         """Translation and localization commands."""

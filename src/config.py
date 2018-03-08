@@ -10,7 +10,7 @@ class Config(object):
 
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'S3cr3t'
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URI') or \
-      'postgresql://postgres:P@ssw0rd!@172.17.0.3/simpleblog'
+      'postgresql://postgres:P@ssw0rd!@172.17.0.2/simpleblog'
     ELASTICSEARCH_URL=os.environ.get('ELASTIC_URI') or \
       'http://172.17.0.5:9200'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -29,14 +29,14 @@ class Config(object):
     DEVELOPMENT = False
     TESTING = False
     PRODUCTION = False
-    DEBUG = False 
+    DEBUG = False
     TESTING = False
 
 class DevelopmentConfig(Config):
     DEBUG = True
     DEVELOPMENT = True
     DEBUG_TB_ENABLED = True
-    # CACHE_TYPE = 'simple' 
+    # CACHE_TYPE = 'simple'
 
 class ProductionConfig(Config):
     DATABASE_URI = ''
@@ -45,6 +45,6 @@ class ProductionConfig(Config):
 class TestingConfig(Config):
     DEBUG = True
     TESTING = True
-    BCRYPT_LOG_ROUNDS = 4  
+    BCRYPT_LOG_ROUNDS = 4
     CSRF_ENABLED = False
-    WTF_CSRF_ENABLED = False  
+    WTF_CSRF_ENABLED = False
