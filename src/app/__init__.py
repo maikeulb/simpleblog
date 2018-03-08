@@ -2,21 +2,22 @@ import config
 import os
 
 from flask import(
-    Flask, 
-    render_template, 
-    request, 
+    Flask,
+    render_template,
+    request,
     current_app)
-from app import commands, models
+# from app import commands, models
+# from app import commands, models
 from app.account import account as account_bp
 from app.extensions import(
-    bcrypt, 
-    cache, 
-    csrf_protect, 
-    db, 
-    debug_toolbar, 
-    login, 
-    migrate, 
-    mail, 
+    bcrypt,
+    cache,
+    csrf_protect,
+    db,
+    debug_toolbar,
+    login,
+    migrate,
+    mail,
     moment)
 from app.main import main as main_bp
 from elasticsearch import Elasticsearch
@@ -32,7 +33,7 @@ def create_app(config_class=Config):
     register_blueprints(app)
     register_extensions(app)
     register_errorhandlers(app)
-    register_commands(app)
+    # register_commands(app)
     return app
 
 
@@ -78,12 +79,12 @@ def register_errorhandlers(app):
         app.errorhandler(errcode)(render_error)
     return None
 
-def register_commands(app):
-    app.cli.add_command(commands.test)
-    app.cli.add_command(commands.lint)
-    app.cli.add_command(commands.clean)
-    app.cli.add_command(commands.urls)
-    app.cli.add_command(commands.urls)
+# def register_commands(app):
+#     app.cli.add_command(commands.test)
+#     app.cli.add_command(commands.lint)
+#     app.cli.add_command(commands.clean)
+#     app.cli.add_command(commands.urls)
+#     app.cli.add_command(commands.urls)
 
 def register_shellcontext(app):
     def shell_context():
