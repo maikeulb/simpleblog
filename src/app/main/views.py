@@ -1,9 +1,9 @@
 from datetime import datetime
 from flask import(
-    render_template, 
-    flash, redirect, 
-    url_for, 
-    request, 
+    render_template,
+    flash, redirect,
+    url_for,
+    request,
     g,
     current_app
 )
@@ -11,18 +11,19 @@ from flask_login import current_user, login_required
 from app.extensions import login, db
 from app.main import main
 from app.main.forms import(
-    EditProfileForm, 
-    PostForm, 
-    SearchForm, 
+    EditProfileForm,
+    PostForm,
+    SearchForm,
     MessageForm
 )
 from app.models import(
-    User, 
-    Post, 
-    Message, 
+    User,
+    Post,
+    Message,
     Notification
 )
 from flask import jsonify
+
 
 @main.before_app_request
 def before_request():
@@ -31,13 +32,14 @@ def before_request():
         db.session.commit()
         g.search_form = SearchForm()
 
+
 @main.route('/', methods=['GET', 'POST'])
 @main.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
     form = PostForm()
     if form.validate_on_submit():
-        post = Post(body=form.post.data, 
+        post = Post(body=form.post.data,
                     author=current_user)
         db.session.add(post)
         db.session.commit()
@@ -55,9 +57,10 @@ def index():
     return render_template('main/index.html',
                            title='Home',
                            form=form,
-                           posts=posts.items, 
+                           posts=posts.items,
                            next_url=next_url,
                            prev_url=prev_url)
+
 
 @main.route('/explore')
 @login_required
@@ -69,9 +72,9 @@ def explore():
         if posts.has_next else None
     prev_url = url_for('main.explore', page=posts.prev_num) \
         if posts.has_prev else None
-    return render_template('main/index.html', 
-                           title='Explore', 
-                           posts=posts.items, 
+    return render_template('main/index.html',
+                           title='Explore',
+                           posts=posts.items,
                            next_url=next_url,
                            prev_url=prev_url)
 
@@ -82,18 +85,19 @@ def user(username):
     user = User.query.filter_by(username=username).first_or_404()
     page = request.args.get('page', 1, type=int)
     posts = user.posts.order_by(Post.timestamp.desc()).paginate(
-                                page, current_app.config['POSTS_PER_PAGE'], False)
+        page, current_app.config['POSTS_PER_PAGE'], False)
     next_url = url_for('main.user', username=user.username,
-        page=posts.next_num) if posts.has_next else None
+                       page=posts.next_num) if posts.has_next else None
     prev_url = url_for('main.user', username=user.username,
-        page=posts.prev_num) if posts.has_prev else None
+                       page=posts.prev_num) if posts.has_prev else None
 
-    return render_template('main/profile.html', 
+    return render_template('main/profile.html',
                            title='User',
-                           user=user, 
+                           user=user,
                            posts=posts.items,
-                           next_url=next_url, 
+                           next_url=next_url,
                            prev_url=prev_url)
+
 
 @main.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
@@ -108,11 +112,12 @@ def edit_profile():
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
-    return render_template('main/edit_profile.html', 
-                           title='Edit Profile', 
+    return render_template('main/edit_profile.html',
+                           title='Edit Profile',
                            form=form)
 
-@main.route('/follow/<username>') #api
+
+@main.route('/follow/<username>')  # api
 @login_required
 def follow(username):
     user = User.query.filter_by(username=username).first()
@@ -128,7 +133,7 @@ def follow(username):
     return redirect(url_for('main.user', username=username))
 
 
-@main.route('/unfollow/<username>') #api
+@main.route('/unfollow/<username>')  # api
 @login_required
 def unfollow(username):
     user = User.query.filter_by(username=username).first()
@@ -156,10 +161,10 @@ def search():
         if total > page * current_app.config['POSTS_PER_PAGE'] else None
     prev_url = url_for('main.search', q=g.search_form.q.data, page=page - 1) \
         if page > 1 else None
-    return render_template('search.html', 
-                           title='Search', 
+    return render_template('search.html',
+                           title='Search',
                            posts=posts,
-                           next_url=next_url, 
+                           next_url=next_url,
                            prev_url=prev_url)
 
 
@@ -179,7 +184,7 @@ def send_message(recipient):
 
     return render_template('send_message.html',
                            title='Send Message',
-                           form=form, 
+                           form=form,
                            recipient=recipient)
 
 
@@ -197,14 +202,14 @@ def messages():
         if messages.has_next else None
     prev_url = url_for('main.messages', page=messages.prev_num) \
         if messages.has_prev else None
-    return render_template('messages.html', 
+    return render_template('messages.html',
                            title='Messages',
                            messages=messages.items,
-                           next_url=next_url, 
+                           next_url=next_url,
                            prev_url=prev_url)
 
 
-@main.route('/notifications') #api
+@main.route('/notifications')  # api
 @login_required
 def notifications():
     since = request.args.get('since', 0.0, type=float)
@@ -215,6 +220,7 @@ def notifications():
         'data': n.get_data(),
         'timestamp': n.timestamp
     } for n in notifications])
+
 
 @main.route('/user/<username>/popup')
 @login_required

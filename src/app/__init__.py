@@ -39,7 +39,6 @@ def create_app(config_class=Config):
 
 def register_extensions(app):
     bcrypt.init_app(app)
-    # cache.init_app(app)
     db.init_app(app)
     csrf_protect.init_app(app)
     login.init_app(app)
@@ -78,17 +77,3 @@ def register_errorhandlers(app):
     for errcode in [401, 404, 500]:
         app.errorhandler(errcode)(render_error)
     return None
-
-# def register_commands(app):
-#     app.cli.add_command(commands.test)
-#     app.cli.add_command(commands.lint)
-#     app.cli.add_command(commands.clean)
-#     app.cli.add_command(commands.urls)
-#     app.cli.add_command(commands.urls)
-
-def register_shellcontext(app):
-    def shell_context():
-        return {
-            'db': db,
-            'User': models.User}
-    app.shell_context_processor(shell_context)

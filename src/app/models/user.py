@@ -18,11 +18,13 @@ followers = db.Table(
     db.Column('followed_id', db.Integer, db.ForeignKey('users.id'))
 )
 
+
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(64), index=True, unique=True, nullable=False)
+    username = db.Column(db.String(64), index=True,
+                         unique=True, nullable=False)
     email = db.Column(db.String(120), index=True, unique=True, nullable=False)
     password = db.Column(db.Binary(128), nullable=True)
     about_me = db.Column(db.String(140))
@@ -30,12 +32,13 @@ class User(UserMixin, db.Model):
     last_message_read_time = db.Column(db.DateTime)
 
     posts = db.relationship(
-        'Post', 
-        backref='author', 
+        'Post',
+        backref='author',
         lazy='dynamic'
     )
+
     followed = db.relationship(
-        'User', 
+        'User',
         secondary=followers,
         primaryjoin=(followers.c.follower_id == id),
         secondaryjoin=(followers.c.followed_id == id),
@@ -44,22 +47,22 @@ class User(UserMixin, db.Model):
     )
 
     messages_sent = db.relationship(
-        'Message', 
+        'Message',
         foreign_keys='Message.sender_id',
-        backref='author', 
+        backref='author',
         lazy='dynamic'
     )
 
     messages_received = db.relationship(
         'Message',
         foreign_keys='Message.recipient_id',
-        backref='recipient', 
+        backref='recipient',
         lazy='dynamic'
     )
 
     notifications = db.relationship(
-        'Notification', 
-        backref='user', 
+        'Notification',
+        backref='user',
         lazy='dynamic'
     )
 
@@ -90,7 +93,7 @@ class User(UserMixin, db.Model):
 
     def followed_posts(self):
         followed = Post.query.join(
-            followers, 
+            followers,
             (followers.c.followed_id == Post.user_id)).filter(
                 followers.c.follower_id == self.id)
         own = Post.query.filter_by(user_id=self.id)
